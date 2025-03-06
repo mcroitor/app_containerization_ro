@@ -23,18 +23,18 @@ Un program care efectuează virtualizarea este numit __hipervizor__. Calculatoru
 În dependență de nivelul de abstractizare la care se efectuează virtualizarea, se disting următoarele tipuri de virtualizare:
 
 - __Virtualizarea la nivel hardware__ presupune instalarea unui hipervizor direct pe hardware-ul gazdei, fără a folosi un sistem de operare gazdă. Acest tip de virtualizare oferă performanțe comparabile cu cele ale unui sistem fizic, ceea ce face posibilă utilizarea virtualizării în scopuri practice și duce la o largă răspândire a acesteia.
-- __Virtualizarea la nivel software__ - virtualizarea la nivelul sistemului de operare. În acest caz, se virtualizează doar spațiul utilizator, iar kernel-ul sistemului de operare rulează direct pe hardware.
+- __Virtualizarea la nivel software__ - virtualizarea la nivelul sistemului de operare. În acest caz, se virtualizează doar spațiul utilizator, iar nucleul sistemului de operare rulează direct pe hardware.
 - __Paravirtualizarea__ - virtualizarea care presupune modificarea sistemului de operare oaspete pentru a lucra cu hipervizorul. În acest caz, sistemul de operare oaspete știe că rulează pe o mașină virtuală și poate comunica direct cu hipervizorul.
 
 ## Hipervizorii
 
 Virtualizarea se realizează cu ajutorul unor instrumente software numite __hipervizori__. Hipervizorii sunt de diferite tipuri, în funcție de modul în care sunt implementați și de nivelul de abstractizare la care lucrează.
 
-__Hipervizorii de tip unu__ sunt cunoscute și sub numele de _hipervizori fără sistem de operare_ și sunt programe hipervizor care sunt instalate direct pe hardware-ul computerului, nu pe un sistem de operare. Prin urmare, hipervizorii de tip unu au performanțe mai bune și sunt de obicei folosiți în aplicații corporative. KVM folosește un hipervizor de tip unu pentru a găzdui mai multe mașini virtuale în sistemul de operare Linux.
+__Hipervizorii de primul tip__ sunt cunoscute și sub numele de _hipervizori fără sistem de operare_ și sunt programe hipervizor care sunt instalate direct pe hardware-ul computerului, nu pe un sistem de operare. Prin urmare, hipervizorii de tip unu au performanțe mai bune și sunt de obicei folosiți în aplicații corporative.
 
 Exemple de hipervizori de tip unu includ _VMware ESXi_ și _Citrix XenServer_.
 
-__Hipervizorii de tip doi__ sunt cunoscuți și sub numele de _hipervizori plasați_ și sunt programe hipervizor care se instalează pe un sistem de operare. Hipervizorii de tip doi sunt mai ușor de instalat și de utilizat, dar au performanțe mai slabe decât hipervizorii de tip unu. Hipervizorii de tip doi sunt de obicei folosiți pentru testare și dezvoltare.
+__Hipervizorii de tipul doi__ sunt cunoscuți și sub numele de _hipervizori plasați_ și sunt programe hipervizor care se instalează pe un sistem de operare. Hipervizorii de tip doi sunt mai ușor de instalat și de utilizat, dar au performanțe mai slabe decât hipervizorii de tip unu. Hipervizorii de tip doi sunt de obicei folosiți pentru testare și dezvoltare.
 
 Exemple de hipervizori de tip doi includ _VMware Workstation_, _Oracle VirtualBox_ și _QEMU_.
 
@@ -117,7 +117,7 @@ qemu-system-x86_64 -hda disk.qcow2 -m 2G -smp 2 -device e1000,netdev=net0 \
 
 ## Open Virtualization Format
 
-__Open Virtualization Format (OVF)__ - este un format deschis pentru împachetarea și distribuirea mașinilor virtuale. OVF este un format standard care permite împachetarea mașinilor virtuale într-un singur fișier care conține toate informațiile necesare pentru implementarea lor. Standardul OVF nu este legat de nicio implementare a hipervizorului sau de arhitectura hardware.
+__Open Virtualization Format (OVF)__ - este un format deschis care permite împachetarea mașinilor virtuale într-un singur fișier care conține toate informațiile necesare pentru implementarea lor. Standardul OVF nu este legat de nicio implementare a hipervizorului sau de arhitectura hardware.
 
 Pachet OVF este compus din mai multe fișiere, de obicei, aflate într-un singur director. Pachetul conține întotdeauna exact un fișier de descriere cu extensia `.ovf`. Acesta este un fișier XML care descrie mașina virtuală împachetată și conține metadatele pachetului, cum ar fi numele, cerințele hardware, referințele la alte fișiere din pachet și descrierile. În plus față de fișierul de descriere, pachetul OVF de obicei conține una sau mai multe imagini de disc și poate include fișiere de certificat și alte fișiere.
 

@@ -1,0 +1,12 @@
+# in baza imaginii de bază ubuntu:18.04
+FROM ubuntu:18.04
+
+# imbunatatirea listei de pachete si a pachetelor in sine
+RUN apt-get update && apt-get -y upgrade
+# instalarea pachetului nginx
+RUN apt-get install -y nginx
+# crearea fișierului index.html
+RUN echo "Hello, world!" > /var/www/html/index.html
+
+# pornirea nginx
+CMD ["nginx", "-g", "daemon off;"]

@@ -84,3 +84,14 @@ După aceasta, puteți adăuga ramura creată la ramura `main`.
 Pentru prezentarea lucrului efectuat indicați referința la repozitoriul creat în răspuns la sarcina.
 
 ## Modul de evaluare
+
+- `1 punct` - crearea contului GitHub
+- `1 punct` - crearea unui repozitoriu denumirea caruia coincide cu numele utilizatorului
+- `3 puncte` - crearea descrierii proiectului în fișierul `README.md`
+- `1 punct` - utilizarea paragrafelor `markdown`
+- `1 punct` - utilizarea titlurilor `markdown`
+- `1 punct` - utilizarea listelor `markdown`
+- `1 punct` - utilizarea imaginilor `markdown`
+- `1 punct` - publicarea codului pe GitHub în ramura `lab02`
+- `-1 punct` - pentru fiecare zi de întârziere
+- `-5 puncte` - pentru copierea codului de la alți studenți

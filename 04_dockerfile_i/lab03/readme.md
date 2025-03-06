@@ -1,4 +1,4 @@
-# Lucrare de laborator Nr2: Prima aplicație Docker
+# Lucrare de laborator Nr3: Prima aplicație Docker
 
 ## Scop
 
@@ -14,9 +14,9 @@ Descărcați și instalați [Docker Desktop](https://www.docker.com/products/doc
 
 ## Executare
 
-Creați un repozitoriu `containers02` și clonați-l pe computerul dvs.
+Creați un repozitoriu `containers03` și clonați-l pe computerul dvs.
 
-Creați în directorul `containers02` fișierul `Dockerfile` cu următorul conținut:
+Creați în directorul `containers03` fișierul `Dockerfile` cu următorul conținut:
 
 ```dockerfile
 FROM debian:latest
@@ -28,10 +28,10 @@ CMD ["sh", "-c", "echo hello from $HOSTNAME"]
 
 ## Pornire și testare
 
-Deschideți terminalul în directorul `containers02` și executați comanda:
+Deschideți terminalul în directorul `containers03` și executați comanda:
 
 ```bash
-docker build -t containers02 .
+docker build -t containers03 .
 ```
 
 _Cât timp a durat crearea imaginii?_
@@ -39,7 +39,7 @@ _Cât timp a durat crearea imaginii?_
 Executați comanda pentru a porni containerul:
 
 ```bash
-docker run --name containers02 containers02
+docker run --name containers03 containers03
 ```
 
 _Ce a fost afișat în consolă?_
@@ -47,8 +47,8 @@ _Ce a fost afișat în consolă?_
 Ștergeți containerul și porniți-l din nou, executând comenzile:
 
 ```bash
-docker rm containers02
-docker run -ti --name containers02 containers02 bash
+docker rm containers03
+docker run -ti --name containers03 containers03 bash
 ```
 
 În fereastra deschisă, executați comenzile:
@@ -76,3 +76,16 @@ Creați în directorul proiectului fișierul `README.md` cu descrierea proiectul
 Pentru prezentarea lucrului efectuat indicați referința la repozitoriul creat în răspuns la sarcina.
 
 ## Modul de evaluare
+
+- `1 punct` - crearea repozitoriului `containers03` pe GitHub
+- `1 punct` - repozitoriu conține fișierul `Dockerfile`
+- `1 punct` - repozitoriu conține directorul `site`
+- `1 punct` - repozitoriu conține fișierul `site/index.html`
+- `1 punct` - descrierea scopului lucrării în fișierul `README.md`
+- `1 punct` - descrierea sarcinii în fișierul `README.md`
+- `1 punct` - descrierea executării lucrării în fișierul `README.md`
+- `1 punct` - răspunsuri la întrebările din fișierul `README.md`
+- `1 punct` - concluzii în fișierul `README.md`
+- `1 punct` - bibliografia în fișierul `README.md`
+- `-1 punct` - pentru fiecare zi de întârziere
+- `-5 puncte` - pentru copierea codului de la colegi
