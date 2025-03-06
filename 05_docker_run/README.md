@@ -1,6 +1,7 @@
 # Pornirea aplicatiilor containerizate
 
 - [Pornirea aplicatiilor containerizate](#pornirea-aplicatiilor-containerizate)
+  - [Instrumente Docker](#instrumente-docker)
   - [Asamblarea imaginii](#asamblarea-imaginii)
   - [Vizualizarea imaginilor existente](#vizualizarea-imaginilor-existente)
   - [Stergerea imaginii](#stergerea-imaginii)
@@ -17,41 +18,71 @@
 
 Containere sunt instanțe ale imaginilor. Containerele pot fi pornite, oprite, mutate și șterse. În această secțiune vom examina comenzile pentru lucru cu containere.
 
+## Instrumente Docker
+
+Docker oferă un set de instrumente pentru gestionarea containerelor și resurselor utilizate de acestea. Se pot evidenția următoarele instrumente Docker:
+
+- `docker image` - gestionarea imaginilor;
+- `docker volume` - gestionarea volumelor;
+- `docker network` - gestionarea rețelelor;
+- `docker container` - gestionarea containerelor;
+- `docker buildx` - gestionarea procesului de construire a imaginii;
+- `docker compose` - gestionarea aplicațiilor multi-container;
+- `docker system` - gestionarea resurselor Docker;
+- `docker init` - crearea fișierului Dockerfile pe baza proiectului existent.
+
+Pentru a afla mai multe despre fiecare instrument, puteți utiliza comanda `docker <command> --help`. De exemplu, pentru a afla mai multe despre comenzile pentru gestionarea imaginilor, se poate utiliza comanda `docker image --help`.
+
 ## Asamblarea imaginii
 
-După ce fișierul `Dockerfile` este creat, puteți începe să construiți imaginea. Construirea imaginii se face de obicei din linia de comandă și pentru construirea imaginii se utilizează comanda `docker build`. Comanda `docker build` are următorul sintaxă:
+| command | docker buildx build  |
+| ------- | -------------------- |
+| _alias_ | docker image build   |
+|         | docker builder build |
+|         | docker build         |
+
+După ce fișierul `Dockerfile` este creat, puteți începe să construiți imaginea. Construirea imaginii se face de obicei din linia de comandă și pentru construirea imaginii se utilizează comanda `docker image build`. Comanda `docker image build` are următorul sintaxă:
 
 ```bash
-docker build [OPTIONS] PATH | URL | -
+docker image build [OPTIONS] PATH | URL | -
 ```
 
 unde `PATH` - calea către directorul în care se află fișierul `Dockerfile`, `URL` - adresa URL a depozitului Git în care se află fișierul `Dockerfile`, `-` - intrare standard.
 
+Comanda `docker image build` are un pseudonim frecvent utilizat `docker build`, în plus, ea va fi echivalentă cu comanda `docker buildx build`.
+
 În caz dacă fișierul `Dockerfile` se află în directorul curent, atunci pentru construirea imaginii este suficient să se execute comanda:
 
 ```bash
-docker build .
+docker image build .
 ```
 
 În acest caz va fi utilizat directorul curent ca context de construire și va fi creată o imagine cu un nume arbitrar și tag `latest`. Dacă este necesar să se specifice numele și tag-ul imaginii, atunci acest lucru poate fi făcut cu ajutorul opțiunii `-t`:
 
 ```bash
-docker build -t myimage:1.0 .
+docker image build -t myimage:1.0 .
 ```
 
-Pentru a vă familiariza în detaliu cu opțiunile comenzii `docker build`, puteți executa comanda:
+Pentru a vă familiariza în detaliu cu opțiunile comenzii `docker image build`, puteți executa comanda:
 
 ```bash
-docker build --help
+docker image build --help
 ```
 
 ## Vizualizarea imaginilor existente
 
-Pentru vizualizarea imaginilor existente se utilizează comanda `docker images`:
+| command | docker image ls   |
+| ------- | ----------------- |
+| _alias_ | docker images     |
+|         | docker image list |
+
+Pentru vizualizarea imaginilor existente se utilizează comanda `docker image ls`:
 
 ```bash
-docker images
+docker image ls [OPTIONS] [REPOSITORY[:TAG]]
 ```
+
+Această comandă poate fi definită ca `docker images` sau `docker image list`.
 
 Ieșirea comenzii va conține următoarele coloane:
 
@@ -63,18 +94,23 @@ Ieșirea comenzii va conține următoarele coloane:
 
 ## Stergerea imaginii
 
-Pentru ștergerea obrazului se utilizează comanda `docker rmi`:
+| command | docker image rm     |
+| ------- | ------------------- |
+| _alias_ | docker rmi          |
+|         | docker image remove |
+
+Pentru ștergerea obrazului se utilizează comanda `docker image rm`:
 
 ```bash
-docker rmi <image_name>
+docker image rm [OPTIONS] <image_name> [<image_name>...]
 ```
 
-Unde `<image_name>` - este identificatorul sau numele imaginii.
+Unde `<image_name>` - este identificatorul sau numele imaginii. Comanda are un pseudonim frecvent utilizat `docker rmi` sau `docker image remove`.
 
 Cu o comanda se poate șterge simultan mai multe imagini, pentru aceasta este necesar să se enumere numele lor prin spațiu:
 
 ```bash
-docker rmi <image_name_1> <image_name_2> <image_name_3>
+docker image rm <image_name_1> <image_name_2> <image_name_3>
 ```
 
 ## Crearea unui container
@@ -82,36 +118,50 @@ docker rmi <image_name_1> <image_name_2> <image_name_3>
 In baza imaginii existente se poate crea un container. Pentru aceasta se utilizează comanda `docker create`:
 
 ```bash
-docker create <image_name>
+docker container create [OPTIONS] <image_name> [ARG...]
 ```
 
-In acest caz va fi creat un container cu un nume arbitrar pe baza imaginii `<image_name>`. Dacă imaginea nu este găsită local, atunci ea va fi descărcată din depozitor. Dacă este necesar să se creeze un container cu un anumit nume, atunci se utilizează opțiunea `--name`:
+In acest caz va fi creat un container cu un nume arbitrar pe baza imaginii `<image_name>`.
+
+Dacă imaginea nu este găsită local, atunci ea va fi descărcată din repozitor. 
+
+Dacă este necesar să se creeze un container cu un anumit nume, atunci se utilizează opțiunea `--name`:
 
 ```bash
-docker create --name <container_name> <image_name>
+docker container create --name <container_name> <image_name>
 ```
 
 Totodată, la crearea containerului se poate specifica întreaga serie de opțiuni, cum ar fi montarea volumelor, redirecționarea porturilor, transmiterea variabilelor de mediu etc. Pentru a vă familiariza în detaliu cu opțiunile comenzii `docker create`, puteți executa comanda:
 
 ```bash
-docker create --help
+docker container create --help
 ```
 
 ## Pornirea containerului
 
-După ce containerul este creat, el poate fi pornit cu ajutorul comenzii `docker start`:
+| command | docker container start |
+| ------- | ---------------------- |
+| _alias_ | docker start           |
+
+După ce containerul este creat, el poate fi pornit cu ajutorul comenzii `docker container start`:
 
 ```bash
-docker start <container_name>
+docker container start [OPTIONS] <container_name> [<container_name>...]
 ```
 
 Deseori dezvoltatorii creează și pornesc containerul cu o singură comandă. Pentru aceasta se utilizează comanda `docker run`:
 
+| command | docker container run |
+| ------- | -------------------- |
+| _alias_ | docker run           |
+
+La pornirea containerului se execută comanda, specificată în fișierul `Dockerfile` cu ajutorul unei din directivelor `CMD` sau `ENTRYPOINT`. Dacă este necesar să se execute o altă comandă, atunci ea se specifică după numele imaginii:
+
 ```bash
-docker run <image_name>
+docker container run <image_name>
 ```
 
-In acest caz va fi creat și pornit containerul cu un nume arbitrar pe baza imaginii `<image_name>`. Dacă imaginea nu este găsită local, atunci ea va fi descărcată din depozitor.
+In acest caz va fi creat și pornit containerul cu un nume arbitrar pe baza imaginii `<image_name>`. Dacă imaginea nu este găsită local, atunci ea va fi descărcată din repozitor.
 
 Pentru a porni containerul în modul daemon se utilizează opțiunea `-d`:
 
@@ -129,6 +179,10 @@ In acest caz va fi creat și pornit containerul cu un nume `<container_name>` pe
 
 ## Comunicarea cu containerul
 
+| command | docker container exec |
+| ------- | --------------------- |
+| _alias_ | docker exec           |
+
 Comunicarea cu containerul se poate face doar cu containerul pornit. Pentru aceasta este necesar să se cunoască numele sau identificatorul containerului. Numele containerului se poate specifica la crearea containerului cu ajutorul opțiunii `--name`, iar identificatorul containerului se poate afla cu ajutorul comenzii `docker ps`.
 
 Pentru a executa comanda în interiorul containerului se poate utiliza comanda `docker exec`:
@@ -137,27 +191,11 @@ Pentru a executa comanda în interiorul containerului se poate utiliza comanda `
 docker exec <container_name> <command>
 ```
 
-La pornirea containerului se execută comanda, specificată în fișierul `Dockerfile` cu ajutorul unei din directivelor `CMD` sau `ENTRYPOINT`. Dacă este necesar să se execute o altă comandă, atunci ea se specifică după numele imaginii:
-
-```bash
-docker run <image_name> <command>
-```
-
-Uneori apare necesitatea de a porni containerul în modul interactiv, de exemplu, pentru depanare. Comunicarea cu containerul permite să se vizualizeze conținutul său, să se execute în el comenzi (de exemplu, să se instaleze un anumit pachet).
-
-Pentru a porni containerul în modul interactiv se utilizează opțiunea `-it`, care combină două opțiuni `-i` (interactive) și `-t` (pseudo-TTY):
-
-```bash
-docker run -it <image_name> <command>
-```
-
-De exemplu, pentru a porni containerul cu imaginea `ubuntu` în modul interactiv se utilizează comanda:
-
-```bash
-docker run -it ubuntu /bin/bash
-```
-
 ## Repornirea containerului
+
+| command | docker container restart |
+| ------- | ------------------------ |
+| _alias_ | docker restart           |
 
 Pentru repornirea containerului se utilizează comanda `docker restart`. De exemplu, pentru repornirea containerului cu numele `my_container` se utilizează următoarea comandă:
 
@@ -166,6 +204,10 @@ docker restart my_container
 ```
 
 ## Copierea fișierelor
+
+| command | docker container cp |
+| ------- | ------------------- |
+| _alias_ | docker cp           |
 
 Pentru copierea fișierelor se utilizează comanda `docker cp`. Sintaxa generală a comenzii `docker cp` arată în felul următor:
 
@@ -187,6 +229,10 @@ docker cp file.txt my_container:/path/to/file.txt
 
 ## Citirea log-urilor containerului
 
+| command | docker container logs |
+| ------- | --------------------- |
+| _alias_ | docker logs           |
+
 Pentru a citi log-urile containerului se utilizează comanda `docker logs`. De exemplu, pentru a citi log-urile containerului cu numele `my_container` se utilizează următoarea comandă:
 
 ```bash
@@ -200,6 +246,12 @@ docker logs -f my_container
 ```
 
 ## Vizualizarea containerelor
+
+| command | docker container ls   |
+| ------- | --------------------- |
+| _alias_ | docker ps             |
+|         | docker container list |
+|         | docker container ps   |
 
 Pentru vizualizarea containerelor pornite se utilizează comanda `docker ps`:
 
@@ -225,6 +277,10 @@ docker ps -a
 
 ## Oprirea containerului
 
+| command | docker container stop |
+| ------- | --------------------- |
+| _alias_ | docker stop           |
+
 Pentru oprirea containerului se utilizează comanda `docker stop`:
 
 ```bash
@@ -238,6 +294,11 @@ docker stop <container_name_1> <container_name_2> <container_name_3>
 ```
 
 ## Stergerea containerului
+
+| command | docker container rm     |
+| ------- | ----------------------- |
+| _alias_ | docker rm               |
+|         | docker container remove |
 
 Pentru ștergerea containerului se utilizează comanda `docker rm`:
 
