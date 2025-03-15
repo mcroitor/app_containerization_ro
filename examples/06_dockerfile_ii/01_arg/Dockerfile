@@ -6,8 +6,11 @@
 
 # debian based image
 # ARG instruction
+FROM scratch
+
 ARG DEBIAN_VERSION=latest
 FROM debian:${DEBIAN_VERSION}
+ARG DEBIAN_VERSION=latest
 
 ENV DEBIAN_VERSION=${DEBIAN_VERSION}
 # ARG instruction
