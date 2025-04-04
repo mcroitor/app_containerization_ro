@@ -127,17 +127,23 @@ FROM ubuntu:18.04
 VOLUME /var/www
 ```
 
-Totodată, se pot defini volume în timpul rulării containerului cu ajutorul opțiunii `-v` a comenzii `docker run`:
+Volumul poate fi definit și în timpul creării containerului cu ajutorul opțiunii `-v` a comenzii `docker run` (sau `docker create`):
 
 ```bash
-docker run -v /var/www myimage
+docker container run -v /var/www myimage
 ```
 
-Poate fi definită și o cale a volumului în timpul rulării containerului:
+În toate cazurile va fi create volume anonime, care vor fi disponibile doar pentru containerul, care le-a creat. Administrarea volumelor anonime se realizează automat de către Docker. De exemplu, la ștergerea containerului, care a creat volumul anonim, volumul poate fi șters.
+
+Totodată, se pot crea volume numite cu ajutorul opțiunii `-v` a comenzii `docker run`:
 
 ```bash
-docker run -v /path/to/host:/path/to/container myimage
+docker container run -v <volume-name>:/path/into/container myimage
 ```
+
+În acest caz volumul va fi disponibil pentru toate containerele, care îl folosesc. Administrarea volumelor numite se realizează manual.
+
+Mecanismul volumelor este preferabil, dacă este necesară interacțiunea cu sistemul de fișiere al gazdei, de asemenea, dacă este necesară păstrarea datelor după terminarea containerului. Îm cazul dacă este necesară doar interacțiunea cu sistemul de fișiere al gazdei, se poate folosi mecanismul de montare a directoriilor gazdei în container.
 
 ## Metadatele imaginii
 

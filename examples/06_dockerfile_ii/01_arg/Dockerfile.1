@@ -1,0 +1,28 @@
+# Usage:
+#   Build: 
+#       docker build -t 01_arg:latest -f Dockerfile.1 .
+#       docker build -t 01_arg -f Dockerfile.1 \
+#           --build-arg UBUNTU_VERSION=22.04 \
+#           --build-arg PHP_VERSION=8.2 .
+#   Run:
+#       docker run --rm 01_arg
+ARG UBUNTU_VERSION=latest
+
+FROM ubuntu:${UBUNTU_VERSION}
+
+ARG PHP_VERSION
+ENV PHP=php${PHP_VERSION}
+ARG PHP_EXTENSIONS=${PHP}-mysql \
+    ${PHP}-curl \
+    ${PHP}-gd \
+    ${PHP}-intl \
+    ${PHP}-json \
+    ${PHP}-mbstring \
+    ${PHP}-xml \
+    ${PHP}-zip
+
+RUN apt-get update && apt-get install -y ${PHP} ${PHP_EXTENSIONS}
+
+COPY service.php /service.php
+
+CMD php /service.php

@@ -1,4 +1,4 @@
-# Lucrare de laborator Nr3: Utilizarea containerelor ca medii de execuție
+# Lucrare de laborator Nr4: Utilizarea containerelor ca medii de execuție
 
 ## Scop
 
@@ -14,9 +14,9 @@ Pentru a executa această lucrare de laborator, trebuie să aveți instalat pe c
 
 ## Executare
 
-Creati un nou repository `containers03` și clonați-l pe computerul dvs.
+Creati un nou repository `containers04` și clonați-l pe computerul dvs.
 
-Creati în directorul `containers03` un fișier `README.md` care va conține descrierea pas cu pas a executării proiectului. Descrierea proiectului trebuie să conțină:
+Creati în directorul `containers04` un fișier `README.md` care va conține descrierea pas cu pas a executării proiectului. Descrierea proiectului trebuie să conțină:
 
 1. Denumirea lucrării de laborator.
 2. Scopul lucrării de laborator.
@@ -28,10 +28,10 @@ Plasati rezultatul lucrării de laborator pe GitHub.
 
 ## Pornire și testare
 
-Deschiți terminalul în directorul `containers03` și executați comanda:
+Deschiți terminalul în directorul `containers04` și executați comanda:
 
 ```bash
-docker run -ti -p 8000:80 --name containers03 ubuntu bash
+docker run -ti -p 8000:80 --name containers04 ubuntu bash
 ```
 
 In fereastra deschisa, executați următoarele comenzi și explicați-le:
@@ -73,7 +73,7 @@ docker ps -a
 Stergeți containerul:
 
 ```bash
-docker rm containers03
+docker rm containers04
 ```
 
 Pentru fiecare comandă, explicați scopul, rezultatul și afișarea în consolă. Este de dorit să furnizați capturi de ecran.

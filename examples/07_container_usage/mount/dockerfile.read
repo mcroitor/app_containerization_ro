@@ -1,0 +1,12 @@
+# container mount /opt directory
+# after that each 5 seconds the content of /opt/data.txt will be printed to the console
+FROM debian:latest
+
+ARG TIMEOUT=5
+ENV TIMEOUT=${TIMEOUT}
+
+COPY read.sh /read.sh
+
+VOLUME [ "/opt" ]
+
+CMD ["sh", "/read.sh"]

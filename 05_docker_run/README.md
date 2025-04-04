@@ -4,7 +4,7 @@
   - [Instrumente Docker](#instrumente-docker)
   - [Asamblarea imaginii](#asamblarea-imaginii)
   - [Vizualizarea imaginilor existente](#vizualizarea-imaginilor-existente)
-  - [Stergerea imaginii](#stergerea-imaginii)
+  - [Ștergerea imaginii](#ștergerea-imaginii)
   - [Crearea unui container](#crearea-unui-container)
   - [Pornirea containerului](#pornirea-containerului)
   - [Comunicarea cu containerul](#comunicarea-cu-containerul)
@@ -15,6 +15,7 @@
   - [Oprirea containerului](#oprirea-containerului)
   - [Stergerea containerului](#stergerea-containerului)
   - [Bibliografie](#bibliografie)
+  - [Întrebări de autocontrol](#întrebări-de-autocontrol)
 
 Containere sunt instanțe ale imaginilor. Containerele pot fi pornite, oprite, mutate și șterse. În această secțiune vom examina comenzile pentru lucru cu containere.
 
@@ -92,7 +93,7 @@ Ieșirea comenzii va conține următoarele coloane:
 - `CREATED` - data crearii imaginii
 - `SIZE` - volumul imaginii
 
-## Stergerea imaginii
+## Ștergerea imaginii
 
 | command | docker image rm     |
 | ------- | ------------------- |
@@ -317,3 +318,6 @@ docker rm <container_name_1> <container_name_2> <container_name_3>
 1. [How do I run a container?, docker.com](https://docs.docker.com/guides/walkthroughs/run-a-container/)
 2. [Getting started guide, docker.com](https://docs.docker.com/get-started/)
 3. [Запуск контейнера Docker, losst.pro, 2020](https://losst.pro/zapusk-kontejnera-docker)
+
+## Întrebări de autocontrol
+
