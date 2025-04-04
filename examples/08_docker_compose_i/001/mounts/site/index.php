@@ -11,6 +11,10 @@ $queries = [
         "title" => "About",
         "content" => "This is a site about my site.",
     ],
+    "contacts" => [
+        "title" => "Contacts",
+        "content" => "Call me, may be, (+373)666-666.",
+    ],
     "404" => [
         "title" => "404",
         "content" => "Page not found.",

@@ -1,21 +1,10 @@
 # network sample
 
-Два контейнера `frontend` и `backend` работают в одной сети. 
+Doua containere `frontend` si `backend` lucrează in aceeasi retea `local`.
 
-В контейнере `frontend` запущен веб-сервер `nginx`, в контейнере `backend` - `php-fpm`.
+În containerul `frontend` este pornit serverul web `nginx`, în containerul `backend` - `php-fpm`.
 
-Контейнер `frontend` создается на базе файла `dockerfile.nginx`, контейнер `backend` на базе файла `dockerfile.backend`.
-
-```bash
-docker network create frontend
-docker network create backend
-docker build -t frontend -f dockerfile.frontend .
-docker build -t backend -f dockerfile.backend .
-docker run -d --name backend backend
-docker network connect backend backend
-docker run -d -p 80:80 --name frontend frontend
-docker network connect backend frontend
-```
+Containerul `frontend` este creat pe baza fisierului `dockerfile.nginx`, containerul `backend` pe baza fisierului `dockerfile.backend`.
 
 ```bash
 docker network create local

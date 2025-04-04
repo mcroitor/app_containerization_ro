@@ -1,10 +1,11 @@
 # mount sample
 
-Два контейнера `read` и `write` монтируют один и тот же том. В контейнере `write` создается файл, контейнер `read` его читает и выводит в консоль. Контейнер `read` создается на базе файла `dockerfile.read`, контейнер `write` на базе файла `dockerfile.write`.
+Doua containere `read` si `write` monteaza acelasi volum. In containerul `write` se creeaza un fisier, containerul `read` il citeste si il afiseaza in consola. Containerul `read` este creat pe baza fisierului `dockerfile.read`, containerul `write` pe baza fisierului `dockerfile.write`.
 
 ```bash
-docker build -t read -f dockerfile.read .
-docker build -t write -f dockerfile.write .
-docker run -d -v opt:/opt --name write write
-docker run -d -v opt:/opt --name read read
+docker image build -t read --arg-build TIMEOUT=7 -f dockerfile.read .
+docker image build -t write -f dockerfile.write .
+docker volume create opt
+docker container run -d -v opt:/opt --name write write
+docker container run -d -v opt:/opt --name read read
 ```

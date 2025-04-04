@@ -5,6 +5,8 @@ FROM debian:latest
 ARG TIMEOUT=5
 ENV TIMEOUT=${TIMEOUT}
 
+COPY read.sh /read.sh
+
 VOLUME [ "/opt" ]
 
-CMD ["sh", "-c", "while true; do cat opt/data.txt; sleep ${TIMEOUT}; done"]
+CMD ["sh", "/read.sh"]
