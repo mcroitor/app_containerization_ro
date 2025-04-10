@@ -1,4 +1,4 @@
-# Lucrare de laborator №7: Integrare continuă cu Github Actions
+# Lucrare de laborator №8: Integrare continuă cu Github Actions
 
 ## Scopul lucrării
 
@@ -14,9 +14,9 @@ Pentru a efectua această lucrare, trebuie să aveți instalat pe computer [Dock
 
 ## Execuție
 
-Creați un repozitoriu `containers07` și copiați-l pe computerul dvs.
+Creați un repozitoriu `containers08` și copiați-l pe computerul dvs.
 
-În directorul `containers07` creați directorul `./site`. În directorul `./site` va fi plasată aplicația Web pe baza PHP.
+În directorul `containers08` creați directorul `./site`. În directorul `./site` va fi plasată aplicația Web pe baza PHP.
 
 ### Crearea aplicației Web
 
@@ -97,7 +97,7 @@ INSERT INTO page (title, content) VALUES ('Page 3', 'Content 3');
 
 ### Crearea testelor
 
-Creați în rădăcina directorului `containers07` directorul `./tests`. În directorul creat creați fișierul `testframework.php` cu următorul conținut:
+Creați în rădăcina directorului `containers08` directorul `./tests`. În directorul creat creați fișierul `testframework.php` cu următorul conținut:
 
 ```php
 <?php
@@ -242,9 +242,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build the Docker image
-        run: docker build -t containers07 .
+        run: docker build -t containers08 .
       - name: Create `container`
-        run: docker create --name container --volume database:/var/www/db containers07
+        run: docker create --name container --volume database:/var/www/db containers08
       - name: Copy tests to the container
         run: docker cp ./tests container:/var/www/html
       - name: Up the container
@@ -263,7 +263,7 @@ Trimiteți modificările în repozitoriul și asigurați-vă că testele trec cu
 
 ## Pregătirea raportului
 
-Creați în directorul `containers07` fișierul `README.md` care conține executarea pas cu pas a proiectului. Descrierea proiectului trebuie să conțină:
+Creați în directorul `containers08` fișierul `README.md` care conține executarea pas cu pas a proiectului. Descrierea proiectului trebuie să conțină:
 
 1. Numele lucrării de laborator.
 2. Scopul lucrării.
