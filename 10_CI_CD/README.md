@@ -56,7 +56,7 @@ Dezavantajele integrării continue includ:
 
 __Livrarea continuă__ (_Continuous Delivery_, CD) este o practică de dezvoltare a software-ului, care presupune automatizarea procesului de livrare a software-ului într-un mediu de producție după fiecare trecere a testelor cu succes. Livrarea continuă permite dezvoltatorilor să livreze modificările de cod în producție în mod rapid și sigur către utilizatori.
 
-În afară de livrare continuă poate fi implementată și __implementarea continuă__ (_Continuous Deployment_), care presupune automatizarea procesului de implementare a software-ului în producție după fiecare trecere a testelor cu succes. Implementarea continuă permite dezvoltatorilor să implementeze modificările de cod în producție fără intervenția umană. Totoată, implementarea continuă necesită un control mai atent al calității și securității codului.
+În afară de livrare continuă poate fi implementată și __implementarea continuă__ (_Continuous Deployment_), care presupune automatizarea procesului de implementare a software-ului în producție după fiecare trecere a testelor cu succes. Implementarea continuă permite dezvoltatorilor să implementeze modificările de cod în producție fără intervenția umană. Totodată, implementarea continuă necesită un control mai atent al calității și securității codului.
 
 Diferența dintre livrarea continuă și implementarea continuă constă în faptul că în primul caz dezvoltatorii decid când să livreze modificările de cod în producție, iar în al doilea caz acest lucru se întâmplă automat.
 

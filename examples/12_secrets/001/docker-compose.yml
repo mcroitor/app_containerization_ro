@@ -1,0 +1,65 @@
+services:
+  frontend:
+    build:
+      context: ./files/nginx
+      dockerfile: Dockerfile
+      args:
+        - NGINX_VERSION=1.23
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./mounts/site:/var/www/html
+  backend:
+    build:
+      context: ./files/php
+      args:
+        PHP_VERSION: 8.1
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - database
+    environment:
+      MYSQL_USER: /run/secrets/db_user
+      MYSQL_PASSWORD: /run/secrets/db_password
+      MYSQL_DATABASE: example_cms_db
+    volumes:
+      - ./mounts/site:/var/www/html
+    secrets:
+      - db_password
+      - db_user
+  database:
+    build:
+      context: ./files/db
+    environment:
+      MYSQL_ROOT_PASSWORD: /run/secrets/db_root_password
+      MYSQL_USER: /run/secrets/db_user
+      MYSQL_PASSWORD: /run/secrets/db_password
+      MYSQL_DATABASE: example_cms_db
+    networks:
+      - backend
+    volumes:
+      - database:/var/lib/mysql
+    secrets:
+      - db_password
+      - db_user
+      - db_root_password
+
+networks:
+  frontend: {}
+  backend: {}
+
+volumes:
+  database: {}
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_user:
+    file: ./secrets/db_user.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt

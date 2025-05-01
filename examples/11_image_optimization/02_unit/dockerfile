@@ -1,6 +1,6 @@
-FROM debian AS build
+FROM gcc:latest AS build
 
-RUN apt-get update && apt-get install -y gcc git
+RUN apt-get update && apt-get install -y git
 
 WORKDIR /src
 
@@ -10,7 +10,7 @@ WORKDIR /src/unit
 
 RUN ./configure --prefix=/usr --modules=php --libdir=/usr/lib/x86_64-linux-gnu && make all
 
-FROM debian
+FROM debian:latest
 
 COPY --from=build /src/unit/build/. /usr/
 
