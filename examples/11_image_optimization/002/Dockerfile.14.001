@@ -1,6 +1,6 @@
 FROM gcc:12.2
 
-COPY ./files/sample.cpp .
+COPY ./files/ .
 
 RUN g++ sample.cpp -o sample -static
 

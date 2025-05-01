@@ -1,7 +1,7 @@
 # Optimizarea imaginii containerului
 
 - [Optimizarea imaginii containerului](#optimizarea-imaginii-containerului)
-  - [Obținerea informațiilor despre dimensiunea imaginii](#obținerea-informațiilor-despre-dimensiunea-imaginii)
+  - [Informație despre imagine](#informație-despre-imagine)
   - [Imaginea de bază minimă](#imaginea-de-bază-minimă)
   - [Construirea în mai multe etape](#construirea-în-mai-multe-etape)
     - [Metoda veche de construcție a imaginilor](#metoda-veche-de-construcție-a-imaginilor)
@@ -9,7 +9,7 @@
     - [Principiile de bază ale construcției în mai multe etape](#principiile-de-bază-ale-construcției-în-mai-multe-etape)
       - [Exemplu multi-stage build](#exemplu-multi-stage-build)
     - [Forma generală a construcției în mai multe etape](#forma-generală-a-construcției-în-mai-multe-etape)
-  - [Ștergerea dependențelor neutilizate și a fișierelor temporare](#ștergerea-dependențelor-neutilizate-și-a-fișierelor-temporare)
+  - [Ștergerea fișierelor neutilizate](#ștergerea-fișierelor-neutilizate)
   - [Reducerea numărului de straturi](#reducerea-numărului-de-straturi)
   - [Repachetarea imaginii](#repachetarea-imaginii)
   - [Utilizarea .dockerignore](#utilizarea-dockerignore)
@@ -17,7 +17,7 @@
   - [Utilizarea cache-ului pentru straturile imaginii](#utilizarea-cache-ului-pentru-straturile-imaginii)
   - [Bibliotrafie](#bibliotrafie)
 
-Simplitatea determinării imaginilor containerelor permite crearea și utilizarea lor rapidă, ceea ce duce la erori și crearea de imagini inutile. Este obișnuit să se creeze imagini de dimensiuni de câteva gigabyte, ceea ce este clar o greșeală. Cel mai probabil, această imagine conține date care pot fi mutate în volume externe sau nu sunt necesare; dependențe inutile care pot fi eliminate; fișiere temporare și cache care pot fi șterse; etc.
+Simplitatea determinării imaginilor containerelor permite crearea și utilizarea lor rapidă, ceea ce duce la greșeli și crearea imaginilor inutile. Este obișnuit să se creeze imagini de dimensiuni de câteva gigabyte, ceea ce este clar o greșeală. Cel mai probabil, această imagine conține date care pot fi mutate în volume externe sau nu sunt necesare; dependențe neutilizate care pot fi eliminate; fișiere temporare și cache care pot fi șterse; etc.
 
 Un volum mare al imaginii are următoarele dezavantaje:
 
@@ -27,9 +27,9 @@ Un volum mare al imaginii are următoarele dezavantaje:
 
 Adică o imagine mare necesită mai multe resurse pentru încărcare, stocare și rulare. Prin urmare, optimizarea imaginii containerului este un pas important în dezvoltarea și utilizarea containerelor.
 
-## Obținerea informațiilor despre dimensiunea imaginii
+## Informație despre imagine
 
-Pentru a vizualiza dimensiunea imaginii, puteți folosi comanda `docker images` (sau `docker image ls`). Executarea acestei comenzi va afișa o listă de imagini, inclusiv dimensiunile lor. De exemplu:
+Pentru a vizualiza dimensiunea imaginii, puteți folosi comanda `docker image ls` (sau `docker images`). Executarea acestei comenzi va afișa o listă de imagini, inclusiv dimensiunile lor. De exemplu:
 
 ```shell
 $ docker images
@@ -170,7 +170,7 @@ Utilizarea construcției în mai multe etape permite simplificarea procesului de
 
 Construirea în mai multe etape permite crearea imaginilor care conțin doar fișierele necesare pentru funcționarea aplicației, folosind un singur `Dockerfile`. Pentru aceasta se folosesc următoarele principii:
 
-- Fiecare instrucțiune folosește o imagine de bază și setează o etapă de construcție;
+- Fiecare instrucțiune folosește o imagine de bază și definește o etapă de construcție;
 - Fiecare etapă de construcție este efectuată într-un container separat;
 - Rezultatul fiecărei etape este salvat într-o imagine;
 - Se pot copia fișiere dintr-o etapă în alta.
@@ -214,7 +214,7 @@ WORKDIR /app
 
 COPY helloworld.cpp .
 
-RUN g++ helloworld.cpp -o helloworld
+RUN g++ helloworld.cpp -o helloworld -static
 
 FROM debian:latest AS run
 
@@ -262,9 +262,9 @@ COPY --from=build /app/app /app/app
 CMD ["./app"]
 ```
 
-## Ștergerea dependențelor neutilizate și a fișierelor temporare
+## Ștergerea fișierelor neutilizate
 
-Ștergerea dependențelor neutilizate permite reducerea dimensiunii imaginii containerului. De exemplu, după instalarea pachetelor puteți șterge fișierele temporare și cache-ul pentru a reduce dimensiunea imaginii.
+Imagini pot conține fișiere temporare, cache-uri, fișiere de configurare, fișiere de log etc. Aceste fișiere nu sunt necesare pentru rularea aplicației și pot fi șterse pentru a reduce dimensiunea imaginii. Ștergerea dependențelor neutilizate permite reducerea dimensiunii imaginii containerului. De exemplu, după instalarea pachetelor puteți șterge fișierele temporare și cache-ul pentru a reduce dimensiunea imaginii.
 
 Această procedură are sens în cazul unirii straturilor imaginii sau în cazul repachetării imaginii. În caz contrar, ștergerea fișierelor temporare și a cache-ului nu va duce la reducerea dimensiunii imaginii.
 
@@ -272,7 +272,7 @@ Această procedură are sens în cazul unirii straturilor imaginii sau în cazul
 
 Imaginea containerului păstrează informația despre fiecare strat, ceea ce mărește dimensiunea sa. În plus, fiecare strat al imaginii este reprezentat printr-o imagine intermediară, stocarea căreia necesită spațiu suplimentar pe disc.
 
-Unirea comenzilor într-un singur strat permite reducerea numărului de imagini intermediare, precum și reducerea dimensiunii imaginii prin reducerea cantității de metadate. În plus, nu se poate crea o imagine mai mică dacă imaginile intermediare au dimensiuni mai mari.
+Unirea comenzilor într-un singur strat permite reducerea numărului de imagini intermediare, precum și reducerea dimensiunii imaginii prin reducerea cantității de metadate. Fiecare imagine are dimensiune mai mare dacât imaginile intermediare.
 
 În loc să creați un strat temporar pentru instalarea pachetelor și ștergerea cache-ului, puteți executa toate comenzile într-un singur strat.
 
@@ -306,7 +306,7 @@ RUN apt-get update && \
 
 ## Repachetarea imaginii
 
-Repachetarea imaginii permite a combina toate straturi ale imaginii într-un strat, ce micșorează volumul imaginii
+Repachetarea imaginii permite a combina toate straturi ale imaginii într-un strat, ce micșorează volumul imaginii.
 
 > **Note:** Repachetarea imaginii duce la pierderea avantajului de partajare a straturilor imaginii între diferite imagini. În plus, se pierd toate metadatele imaginii, precum și porturile deschise, variabilele de mediu etc. Acest lucru poate fi folosit doar dacă încercați să optimizați o imagine străină.
 

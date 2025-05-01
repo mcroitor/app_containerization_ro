@@ -1,11 +1,14 @@
-FROM gcc:latest AS builder
+FROM gcc:latest
 
 WORKDIR /app
 COPY helloworld.cpp .
-RUN g++ helloworld.cpp -o helloworld -static
+RUN g++ helloworld.cpp -o helloworld
 
-FROM scratch
+FROM alpine:latest
 
-COPY --from=builder /app/helloworld /helloworld
+COPY --from=0 /app/helloworld /helloworld
 
-CMD ["/helloworld"]
+WORKDIR /
+RUN chmod +x /helloworld && ls -l
+
+CMD ["sh", "-c", "ls -l && cat ./helloworld && /helloworld"]
