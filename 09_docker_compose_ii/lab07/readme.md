@@ -2,7 +2,7 @@
 
 ## Scopul lucrării
 
-Famialiarizarea cu gestiunea aplicației multi-container creat cu `docker-compose`.
+Familiarizarea cu gestiunea aplicației multi-container creat cu `docker-compose`.
 
 ## Sarcina
 

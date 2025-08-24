@@ -18,17 +18,18 @@ Creati un nou repository `containers04` și clonați-l pe computerul dvs.
 
 Creati în directorul `containers04` un fișier `README.md` care va conține descrierea pas cu pas a executării proiectului. Descrierea proiectului trebuie să conțină:
 
-1. Denumirea lucrării de laborator.
-2. Scopul lucrării de laborator.
-3. Sarcina lucrării de laborator.
-4. Descrierea executării lucrării de laborator.
-5. Concluzii.
+1. Denumirea lucrării de laborator;
+2. Scopul lucrării de laborator;
+3. Sarcina lucrării de laborator;
+4. Descrierea executării lucrării de laborator;
+5. Concluzii;
+6. Referințe la sursele utilizate.
 
 Plasati rezultatul lucrării de laborator pe GitHub.
 
 ## Pornire și testare
 
-Deschiți terminalul în directorul `containers04` și executați comanda:
+Deschideți terminalul în directorul `containers04` și executați comanda:
 
 ```bash
 docker run -ti -p 8000:80 --name containers04 ubuntu bash
@@ -62,9 +63,9 @@ cat 000-default.conf
 
 Ce vedeți pe ecran?
 
-Inchideți fereastra terminalului cu comanda `exit`.
+Închideți fereastra terminalului cu comanda `exit`.
 
-Afisați lista de containere:
+Afișați lista de containere:
 
 ```bash
 docker ps -a
@@ -83,3 +84,17 @@ Pentru fiecare comandă, explicați scopul, rezultatul și afișarea în consol�
 Pentru prezentarea lucrului efectuat indicați referința la repozitoriul creat în răspuns la sarcina.
 
 ## Modul de evaluare
+
+- `1 punct` - crearea repozitoriului `containers04` pe GitHub
+- `1 punct` - explicația comenzii de pornire a containerului
+- `1 punct` - explicația comenzii de instalare a `apache2`
+- `1 punct` - explicația comenzii de pornire a `apache2`
+- `1 punct` - explicația comenzii de vizualizare a conținutului directorului `/var/www/html/`
+- `1 punct` - explicația comenzii de creare a fișierului `index.html`
+- `1 punct` - explicația comenzii de vizualizare a conținutului fișierului `000-default.conf`
+- `1 punct` - explicația comenzii de vizualizare a listei de containere
+- `1 punct` - explicația comenzii de ștergere a containerului
+- `1 punct` - pentru prezența capturilor de ecran / ieșirilor în consolă
+- `2 puncte` - prezentarea lucrului efectuat
+- `-1 punct` - pentru fiecare zi de întârziere la predare
+- `-5 puncte` - pentru copierea codului de la alți studenți

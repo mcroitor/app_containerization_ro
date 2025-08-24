@@ -1,4 +1,4 @@
-# Lucrare de laborator Nr1: Server virtual
+# Lucrare de laborator Nr2: Server virtual
 
 Această lucrare de laborator vă familiarizează cu virtualizarea sistemelor de operare și configurarea unui server HTTP virtual.
 
@@ -10,9 +10,9 @@ Instalați `QEMU`. Redenumiți imaginea distributivului Debian descărcat în `d
 
 ## Executare
 
-Creați directorul `lab01`. În acest director creați directorul `dvd` și fișierul `readme.md`. În directorul `dvd` plasați imaginea ISO a distributivului Debian.
+Creați directorul `lab02`. În acest director creați directorul `dvd` și fișierul `readme.md`. În directorul `dvd` plasați imaginea ISO a distributivului Debian.
 
-În consolă creați în directorul `lab01` imaginea discului pentru mașina virtuală de dimensiune `8 GB` și format `qcow2`, folosind utilitarul `qemu-img`:
+În consolă creați în directorul `lab02` imaginea discului pentru mașina virtuală de dimensiune `8 GB` și format `qcow2`, folosind utilitarul `qemu-img`:
 
 ```bash
 qemu-img create -f qcow2 debian.qcow2 8G
@@ -190,7 +190,7 @@ Răspundeți la următoarele întrebări:
 6. Cât spațiu ocupă instalarea OS (disc virtual) pe mașina gazdă?
 7. Care sunt recomandările privind partiționarea discului pentru servere? De ce se recomandă să se particioneze discul în acest fel?
 
-Arhivați fișierul `readme.md` (și posibilele capturi de ecran) în arhiva `<lastname>-<firstname>-lab01.md.zip` și atașați arhiva obținută la sarcină în Moodle pentru verificare.
+Arhivați fișierul `readme.md` (și posibilele capturi de ecran) în arhiva `<lastname>-<firstname>-lab02.md.zip` și atașați arhiva obținută la sarcină în Moodle pentru verificare.
 
 ## Evaluare
 

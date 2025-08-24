@@ -121,7 +121,7 @@ Totodată nu este necesar să actualizați imediat la ultima versiune, care poat
 
 - Utilizați versiuni stabile sau long-term ale imaginilor de bază, care oferă rapid și frecvent actualizări de securitate;
 - Fiți pregătit să renunțați la versiunile vechi și să faceți migrarea înainte de expirarea suportului pentru versiunea curentă a imaginii de bază, care nu mai primește actualizări;
-- De asemenea, recompilați periodic propriile imagini folosind o strategie similară pentru a obține cele mai recente pachete din distribuția de bază, Node, Golang, Python etc. Majoritatea managerilor de pachete sau dependințe, cum ar fi `composer`, `npm` sau `go mod`, `pip` sau `poetry oferă modalități de a specifica intervalul de versiuni pentru a urmări cele mai recente actualizări de securitate.
+- De asemenea, recompilați periodic propriile imagini folosind o strategie similară pentru a obține cele mai recente pachete din distribuția de bază, Node, Golang, Python etc. Majoritatea managerilor de pachete sau dependințe, cum ar fi `composer`, `npm` sau `go mod`, `pip` sau `poetry` oferă modalități de a specifica intervalul de versiuni pentru a urmări cele mai recente actualizări de securitate.
 
 ### Porturi deschise
 
@@ -193,11 +193,11 @@ Utilizați variabile de mediu pentru configurarea nivelului de jurnalizare și m
 
 ### Ordinea straturilor
 
-__Plăsați instrucțiile în Dockerfile în ordinea inversă a frecvenței modificărilor.__
+__Plasați instrucțiunile în Dockerfile în ordinea inversă a frecvenței modificărilor.__
 
-Ordinea instrucțiilor în fișierul Dockerfile afectează la cache-ul straturilor imaginii. Atunci când se modifică o instrucțiune, toate instrucțiunile ulterioare vor fi recompilate, ceea ce poate duce la creșterea timpului de construcție.
+Ordinea instrucțiunilor în fișierul Dockerfile afectează la cache-ul straturilor imaginii. Atunci când se modifică o instrucțiune, toate instrucțiunile ulterioare vor fi recompilate, ceea ce poate duce la creșterea timpului de construcție.
 
-Din acest motiv se recomandă plasarea instrucțiilor în Dockerfile în ordinea inversă a frecvenței modificărilor. De exemplu, instrucțiile care se schimbă rar (instalarea dependințelor, copierea fișierelor) ar trebui plasate la începutul Dockerfile, iar instrucțiile care se schimbă frecvent (compilarea codului, instalarea pachetelor) ar trebui plasate la sfârșitul Dockerfile.
+Din acest motiv se recomandă plasarea instrucțiunilor în Dockerfile în ordinea inversă a frecvenței modificărilor. De exemplu, instrucțiunile care se schimbă rar (instalarea dependințelor, copierea fișierelor) ar trebui plasate la începutul Dockerfile, iar instrucțiunile care se schimbă frecvent (compilarea codului, instalarea pachetelor) ar trebui plasate la sfârșitul Dockerfile.
 
 Ordinea greșită a instrucțiunilor:
 
@@ -211,7 +211,7 @@ RUN apt-get update && apt-get install -y python3
 CMD ["python3", "/app/app.py"]
 ```
 
-Va fi mai bine dacă se schimbă ordinea instrucțiilor `COPY` și `RUN`:
+Va fi mai bine dacă se schimbă ordinea instrucțiunilor `COPY` și `RUN`:
 
 ```Dockerfile
 FROM ubuntu:20.04

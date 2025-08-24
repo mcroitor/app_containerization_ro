@@ -1,99 +1,145 @@
-# Introducere / Istorie
+# Introducere
 
-- [Introducere / Istorie](#introducere--istorie)
-  - [Idee de izolare a proceselor](#idee-de-izolare-a-proceselor)
-  - [Virtualizare și containerizare](#virtualizare-și-containerizare)
-  - [Domeniu de utilizare](#domeniu-de-utilizare)
-  - [Avantaje și dezavantaje](#avantaje-și-dezavantaje)
-  - [Istoria dezvoltării containerizării](#istoria-dezvoltării-containerizării)
+- [Introducere](#introducere)
+  - [Virtualizare](#virtualizare)
+    - [Noțiunea de virtualizare](#noțiunea-de-virtualizare)
+    - [Motivele apariției virtualizării](#motivele-apariției-virtualizării)
+    - [Domenii de aplicare](#domenii-de-aplicare)
+    - [Avantaje și dezavantaje](#avantaje-și-dezavantaje)
+  - [Containerizare](#containerizare)
+    - [Ideea izolării proceselor](#ideea-izolării-proceselor)
+    - [Noțiunea de containerizare](#noțiunea-de-containerizare)
+    - [Domenii de aplicare](#domenii-de-aplicare-1)
+    - [Avantaje și dezavantaje](#avantaje-și-dezavantaje-1)
+  - [Istoria dezvoltării virtualizării și containerizării](#istoria-dezvoltării-virtualizării-și-containerizării)
   - [Bibliografie](#bibliografie)
-  - [Lista termenilor](#lista-termenilor)
+  - [Lista de termeni](#lista-de-termeni)
 
-## Idee de izolare a proceselor
+<div class="epigraph">
 
-Aplicații moderne utilizează arhitectura modulară în careva mod: aceasta este determinată de faptul că aplicațiile rulează în cadrul sistemului de operare și interacționează cu acesta. Cu toate acestea, există situații în care sistemul de operare nu are o anumită bibliotecă necesară pentru a rula aplicația. În acest caz, furnizorul aplicației trebuie să fie sigur că produsul său va fi rulat și va funcționa independent de mediu, așa că trebuie să asigure aplicației toate dependențele sale, nu să se bazeze pe faptul că sistemul de operare de pe computerul utilizatorului are biblioteca necesară.
+_Stăteau sub copac, îmbrățișați pe după umeri, și Alice a înțeles imediat cine este Tweedledum și cine este Tweedledee, pentru că pe gulerul unuia era brodat „TWEEDLE”, iar pe al celuilalt – „DEE”._ --- Lewis Carroll, „Alice în Țara Oglinzilor”
 
-Un alt aspect important de lucru a aplicațiilor este securitatea: nici o altă aplicație nu trebuie să influențeze în mod neautorizat funcționarea aplicației software, la fel cum aplicația software nu trebuie să influențeze alte aplicații.
+</div>
 
-__Izolarea proceselor__ este o posibilitate de a porni mai multe procese în cadrul unui singur sistem de operare, dar cu resurse izolate. Aceste procese nu pot influența unul pe altul, iar funcționarea lor nu depinde unul de altul. Izolarea proceselor permite rularea mai multor aplicații pe un singur host, fără a vă face griji că o aplicație poate afecta funcționarea alteia.
+## Virtualizare
 
-Scopul izolării proceselor este securitatea și fiabilitatea aplicațiilor. Dacă o aplicație se încheie cu o eroare, aceasta nu afectează funcționarea altor aplicații. Dacă o aplicație este supusă unui atac, aceasta nu afectează funcționarea altor aplicații.
+Virtualizarea joacă un rol important în tehnologiile informaționale moderne și ocupă un loc central în domeniul cloud computing. Ea permite rularea mai multor mașini virtuale pe un singur server fizic, ceea ce crește eficiența utilizării resurselor hardware și simplifică gestionarea infrastructurii.
 
-Pentru a rezolva aceste probleme, - plenitudinea mediului de program și izolarea acestuia de alte programe - au fost propuse două abordări: virtualizarea și containerizarea (ca un caz particular al virtualizării).
+De asemenea, virtualizarea este folosită pentru crearea de medii izolate de dezvoltare și testare a software-ului, ceea ce contribuie la creșterea calității și securității aplicațiilor.
 
-## Virtualizare și containerizare
+### Noțiunea de virtualizare
 
-Sub __virtualizarea__ se înțelege tehnologia care permite rularea unei instanțe a unui sistem de operare în cadrul altui sistem de operare (numit gazda / __host__). Pentru virtualizare, __hipervizorul__ (software-ul de virtualizare) implementează emularea hardware-ului (procesor, memorie, spațiu de stocare, interfețe de rețea etc.), adică creează o mașină virtuală pe care se instalează sistemul de operare. Virtualizarea permite rularea mai multor instanțe ale aceluiași sistem de operare pe un singur gazdă. Fiecare instanță are propriile sale procese, sistem de fișiere, interfețe de rețea și utilizatori.
+__Virtualizarea__ este o tehnologie care permite rularea unei instanțe a unui sistem de operare în cadrul altui sistem de operare (numit __gazdă__). Pentru aceasta se folosește un __hipervizor__ — un program care emulează resursele hardware (procesor, memorie, spațiu pe disc, interfețe de rețea etc.) și creează mașini virtuale pe care se instalează sisteme de operare.
 
-__Containerizarea__ este o metodă de virtualizare care utilizează resursele nucleului sistemului de operare. Aceasta este o diferență față de virtualizarea obișnuită, în care are loc emularea hardware-ului. Containerizarea este des utilizată pentru a crea instanțe izolate ale aplicațiilor specifice, nu a întregului sistem de operare. Aceste instanțe izolate ale aplicațiilor se numesc containere.
+Fiecare mașină virtuală este complet izolată, are propriile procese, sistem de fișiere, interfețe de rețea, utilizatori și nucleu de sistem de operare. Mașinile virtuale pot rula sisteme de operare diferite față de gazdă.
+
+### Motivele apariției virtualizării
+
+Virtualizarea a apărut din necesitatea de a distribui eficient resursele de calcul între mai mulți utilizatori pe o singură mașină fizică. În timp, a devenit baza pentru cloud computing și infrastructurile IT moderne.
+
+### Domenii de aplicare
+
+Virtualizarea este folosită pentru consolidarea serverelor, creșterea rezilienței și scalabilității, optimizarea utilizării resurselor hardware, precum și pentru crearea de medii izolate de dezvoltare și testare.
+
+### Avantaje și dezavantaje
+
+| Avantaje                                               | Dezavantaje                          |
+| ------------------------------------------------------ | ------------------------------------ |
+| Posibilitatea de a rula mai multe OS pe un singur PC   | Cerințe crescute de resurse          |
+| Scalabilitate                                          | Necesitatea unor cunoștințe speciale |
+| Izolare                                                | Probleme de licențiere               |
+| Gestionare flexibilă a resurselor                      |                                      |
+
+## Containerizare
+
+Containerizarea este o tehnologie de izolare a aplicațiilor la nivelul sistemului de operare, folosind nucleul comun al gazdei și mecanismele nucleului OS (namespaces, cgroups etc.) pentru izolare și gestionarea resurselor. Spre deosebire de virtualizare, containerele nu emulează hardware-ul și nu necesită rularea unui sistem de operare invitat separat pentru fiecare aplicație.
+
+Containerizarea permite rularea mai multor instanțe izolate de aplicații (containere) pe o singură gazdă, ceea ce crește eficiența utilizării resurselor hardware și simplifică gestionarea infrastructurii.
+
+### Ideea izolării proceselor
+
+Aplicațiile moderne folosesc adesea o arhitectură modulară și necesită anumite biblioteci și dependențe. Containerizarea permite livrarea aplicației împreună cu toate dependențele necesare, asigurând funcționarea acesteia indiferent de mediul gazdei.
+
+Izolarea se realizează cu ajutorul mecanismelor nucleului OS, precum namespaces și cgroups, permițând rularea mai multor procese în cadrul unui singur sistem de operare, dar cu resurse izolate unele de altele.
+
+### Noțiunea de containerizare
+
+__Containerizarea__ este o tehnologie prin care aplicațiile sunt rulate în containere separate, folosind nucleul comun al gazdei. Containerele asigură izolarea proceselor și resurselor, dar nu emulează hardware-ul.
+
+Containerele permit crearea de aplicații care funcționează pe orice sistem cu suport pentru containere și nucleu compatibil (de exemplu, containerele Linux — doar pe Linux). Acest lucru asigură portabilitate, standardizare și accelerează procesele de dezvoltare, testare și implementare.
+
+Totuși, containerele nu oferă același nivel de izolare și securitate ca mașinile virtuale, deoarece folosesc nucleul comun al gazdei. Capacitățile lor sunt limitate de nucleul sistemului de operare.
 
 ![Virtualizare versus Containerizare](images/01001_virtual_ws_container.png)
 
-Containerizarea, spre deosebire de virtualizare, consumă mult mai puține resurse, deoarece:
+Containerizarea, spre deosebire de virtualizare, consumă semnificativ mai puține resurse, deoarece:
 
-- nu emulează hardware-ul, ci oferă acces la hardware-ul gazdă.
-- nu creează un sistem de operare gazdă care consumă resurse suplimentare;
+- folosește nucleul comun al OS, în timp ce virtualizarea necesită un nucleu separat pentru fiecare mașină virtuală;
+- nu emulează hardware-ul, ci folosește mecanismele nucleului OS pentru izolare și gestionarea resurselor;
+- nu creează un sistem de operare invitat, care ar consuma resurse suplimentare.
 
-## Domeniu de utilizare
+### Domenii de aplicare
 
-Apariția virtualizării este legată de necesitatea de a oferi spațiu de lucru mai multor utilizatori pe un singur computer fizic. În timp, virtualizarea a devenit un element important al tehnologiilor informaționale moderne și a ocupat un loc central în domeniul calculului în cloud.
+Astăzi, containerele sunt folosite în principal pentru dezvoltarea, testarea și implementarea aplicațiilor. Ele permit crearea de medii portabile și standardizate, ceea ce este deosebit de important pentru procesele DevOps, arhitectura de tip microservicii și platformele cloud.
 
-Totodată virtualizarea permite crearea mediilor de dezvoltare și testare izolate pentru software, ceea ce facilitează dezvoltarea și îmbunătățește calitatea software-ului.
+Domenii de aplicare a containerelor:
 
-În ciuda faptului că ideea originală a containerizării se referea la securitate și fiabilitate, în prezent containerele sunt utilizate în principal pentru dezvoltarea, testarea și implementarea produselor software. Containerele permit crearea de produse software care rulează pe orice sistem de operare, nu depind de hardware și nu necesită instalarea dependențelor suplimentare.
+- _Dezvoltare_ — crearea de aplicații pentru diverse sisteme de operare;
+- _Testare_ — depanare rapidă și sigură a programelor;
+- _Build_ — compilarea în containere evită problemele cu dependențele;
+- _Implementare_ — automatizarea și scalarea aplicațiilor în producție.
 
-Domeniul de aplicare al containerelor:
+### Avantaje și dezavantaje
 
-- _Dezvoltarea de produse software_ - crearea de produse software este posibilă pentru orice sistem de operare;
-- _Testarea produselor software_ - depanarea programelor în containere este mai sigură și mai ușoară;
-- _Asamblarea produselor software_ - asamblarea programelor în containere permite evitarea problemelor cu dependențele;
-- _Implementarea sistemelor de informații_ - implementarea unui cluster de containere se reduce la crearea și pornirea containerelor pe baza imaginilor.
+| Avantaje                  | Dezavantaje                                            |
+| ------------------------- | ----------------------------------------------------- |
+| Simplitate în creare      | Capacități limitate (dependență de nucleul OS)        |
+| Mediu flexibil            | Complexitate crescută în gestionarea clusterelor      |
+| Consum redus de resurse   | Necesitatea unor cunoștințe speciale                  |
+| Portabilitate             | Izolare și securitate mai scăzute față de VM          |
+| Standardizare             | Suport limitat pentru diverse OS pe aceeași gazdă     |
+| Izolarea proceselor       |                                                       |
+| Scalare rapidă            |                                                       |
 
-## Avantaje și dezavantaje
+__Explicații pentru avantaje:__
 
-Succesul tehnologiei containerizării este asigurat de avantajele sale, cum ar fi:
+- _Simplitate în creare_ — containerele sunt ușor de creat, rulat și șters;
+- _Mediu flexibil_ — operațiile cu containere sunt mult mai rapide decât cu mașinile virtuale;
+- _Consum redus de resurse_ — containerele folosesc nucleul comun al OS, permițând rularea unui număr mare de instanțe;
+- _Portabilitate_ — containerul conține toate dependențele necesare și poate fi rulat pe orice sistem cu suport pentru containere și nucleu compatibil;
+- _Standardizare_ — bazat pe standarde deschise;
+- _Izolarea proceselor_ — fiecare container izolează procesele sale de celelalte și de gazdă;
+- _Scalare rapidă_ — containerele pot fi pornite și oprite rapid.
 
-- _Ușurința de creare_ - containerele sunt ușor de creat, pornit și șters;
-- _Mediu flexibil_ - crearea, repornirea și ștergerea containerelor este mult mai rapidă decât lucrul cu mașini virtuale;
-- _Consum redus de resurse_ - spre deosebire de virtualizare, containerele utilizează un singur nucleu de sistem de operare, ceea ce permite rularea unui număr mare de containere pe o singură gazdă;
-- _Performanță ridicată_ - spre deosebire de virtualizare, containerele utilizează un singur nucleu de sistem de operare, ceea ce permite rularea unui număr mare de containere pe o singură gazdă;
-- _Portabilitate_ - containerul încorporează toate dependențele;
-- _Standardizare_ - se bazează pe standarde deschise;
-- _Securitate_ - fiecare container izolează propriile sale procese de celelalte și de gazdă.
+__Explicații pentru dezavantaje:__
 
-Cu toate acestea, există și unele dezavantaje ale containerizării:
+- _Capacități limitate_ — containerele nu pot interacționa direct cu hardware-ul, fiind limitate de nucleul OS gazdă;
+- _Complexitate crescută în gestionarea clusterelor de containere_ — necesită instrumente și cunoștințe speciale;
+- _Izolare și securitate mai scăzute față de mașinile virtuale_ — containerele folosesc nucleul comun, ceea ce poate fi o vulnerabilitate dacă nu sunt configurate corect;
+- _Suport limitat pentru diverse OS pe aceeași gazdă_ — pe o gazdă pot rula doar containere compatibile cu nucleul acelei OS.
 
-- _Capacități limitate_ - containerele nu pot lucra cu hardware-ul direct;
-- _Complexitatea ridicată a gestionării clusterului de containere_ - gestionarea interacțiunii unui grup de containere este o sarcină non-trivială.
+Aceste dezavantaje sunt depășite treptat odată cu dezvoltarea tehnologiilor de containerizare și apariția unor noi instrumente de management.
 
-Aceste dezavantaje sunt depășite odată cu dezvoltarea tehnologiei containerizării, precum și cu descrierea recomandărilor pentru utilizarea containerelor. Cu toate acestea, aceste dezavantaje sunt depășite odată cu dezvoltarea tehnologiei containerizării, precum și cu descrierea recomandărilor pentru utilizarea containerelor.
+## Istoria dezvoltării virtualizării și containerizării
 
-## Istoria dezvoltării containerizării
+La începuturile informaticii, calculatoarele erau foarte scumpe și accesibile doar organizațiilor mari. Resursele de calcul trebuiau economisite prin orice mijloace. Primii programatori scriau cod pe cartele perforate și le predau operatorului, care le introducea pe rând în mașină. Utilizarea resurselor era ineficientă.
 
-Istoria dezvoltării containerizării include virtualizarea, izolarea proceselor și containerizarea.
+Primele încercări de virtualizare au fost făcute în anii 1960. Inginerii IBM au propus rularea mai multor mașini virtuale cu propriile sisteme de operare pe un singur calculator. În 1966 a fost creată prima mașină virtuală IBM VM/370. Virtualizarea a permis crearea de programe independente de hardware și a facilitat portabilitatea codului.
 
-Primele încercări de virtualizare au fost făcute în anii 1960. Primele experimente în acest domeniu au fost efectuate de angajații centrului de cercetare al companiei IBM, care au dezvoltat emulatoare software pentru computerele IBM 7040, care permiteau rularea mai multor instanțe ale aplicației pe un singur computer. În 1966 a fost creat primul sistem de operare virtual IBM VM/370. În viitor, astfel de emulatoare ar trebui să contribuie la dezvoltarea programelor independente de hardware și să faciliteze portabilitatea codului pe calculatoare cu alte arhitecturi. Virtualizarea a fost necesară și pentru îmbunătățirea limbajelor de programare de nivel înalt: cu ajutorul acesteia a fost creat un mediu de execuție pentru aplicațiile utilizatorului, a fost realizată replicarea mediului de operare, a fost emulat sistemul de comenzi al procesorului.
+Un moment de cotitură pentru containerizare a fost anul 1979, când la AT&T și Bell Laboratories, în versiunea a 7-a de Unix, a apărut apelul de sistem __chroot__, care schimba directorul rădăcină al procesului. Acesta a pus bazele izolării la nivel de fișiere. În 1999, în FreeBSD a apărut tehnologia __Jail__, care permitea rularea mai multor copii izolate ale OS cu același nucleu. În 2005, Sun Microsystems a prezentat __Solaris Containers__, iar în 2007 Google a dezvoltat tehnologia __cgroups__ pentru limitarea resurselor proceselor. În 2008, cgroups a fost inclus în nucleul Linux.
 
-Dacă apariția mașinilor virtuale a fost punctul de plecare pentru dezvoltarea sistemelor de containerizare, atunci momentul de cotitură în istoria lor a fost, fără îndoială, anul 1979, când la AT&T și Bell Laboratories a fost dezvoltată versiunea 7 a SO Unix. Printre alte inovații, această versiune a introdus apelul de sistem __chroot__, care schimbă locația directorului rădăcină al procesului și a elementelor sale copil. Un program care rulează în directorul rădăcină modificat va avea acces doar la fișierele din acest director. Acest lucru a pus bazele tehnologiei de izolare a proceselor și de separare a accesului la fișiere pentru fiecare proces în Unix. În 1982, chroot a fost inclus în BSD, ceea ce a permis utilizarea mecanismelor similare de izolare în sistemele derivate.
+În 2013, compania Docker a prezentat sistemul de containerizare __Docker__, care a simplificat crearea, rularea și gestionarea containerelor. Docker a devenit baza ecosistemului modern de containere, iar Kubernetes — cel mai popular instrument de orchestrare a containerelor.
 
-În 1999, în cadrul unui singur sistem de operare BSD, se puteau rula mai multe copii izolate ale sistemului de operare, folosind un nucleu comun. Această tehnologie a primit numele de __FreeBSD Jail__. Ea permitea crearea de medii izolate, în care se puteau rula aplicații, fără a afecta funcționarea altor aplicații. FreeBSD Jail a fost bazat pe chroot.
+> _În cadrul acestui curs vor fi studiate containerele Docker._
 
-În 2005, Sun Microsystems a prezentat __Solaris Containers__ - prima implementare a containerelor. Solaris Containers permitea rularea mai multor instanțe izolate ale sistemului de operare Solaris pe un singur host. Fiecare instanță avea propriile procese, sistem de fișiere, interfețe de rețea și utilizatori. Solaris Containers a fost bazat pe FreeBSD Jail.
+În 2014, Google a prezentat sistemul de management al containerelor __Kubernetes__, care a devenit rapid standardul pentru automatizarea implementării, scalării și gestionării aplicațiilor containerizate.
 
-În 2007, compania Google a prezentat tehnologia de gestionare a proceselor __cgroups__ (control groups). Tehnologic, `cgroups` este un grup de procese pentru care, la nivelul sistemului de operare, sunt impuse restricții privind utilizarea diferitelor resurse - memorie, intrare-ieșire, rețea. Aceste grupuri izolate de procese pot fi unite în sisteme ierarhice și gestionate. `cgroups` implementează nu doar izolarea, dar și prioritizarea (diferitelor grupuri li se poate aloca un volum diferit de resurse) și contabilitatea strictă. În 2008, funcționalitatea `cgroups` a fost inclusă în nucleul Linux.
-
-În 2013, a fost prezentat sistemul de containerizare __Docker__. Docker permite crearea de imagini ale aplicațiilor, rularea containerelor și gestionarea acestora. De la apariția Docker pe piață și implementarea acestuia de către mulți furnizori de servicii cloud pentru a oferi clienților containere ca serviciu, popularitatea acestei tehnologii a început să crească rapid. De fapt, Docker a devenit pionierul unui întreg ecosistem pentru gestionarea containerelor. Unul dintre reprezentanții de seamă ai acestei familii este, cu dreptate, Kubernetes.
-
-> _În cadrul acestui curs, se vor studia în special containerele Docker._
-
-În 2014, compania Google a prezentat sistemul de gestionare (orchestrare) __Kubernetes__. Kubernetes permite rularea și gestionarea unui număr mare de containere. Kubernetes a devenit foarte rapid cel mai popular sistem pentru automatizarea implementării, scalării și gestionării aplicațiilor containerizate la nivel industrial.
-
-Siguranța și comoditatea containerelor, precum și viteza mare de implementare, au dus la apariția unei direcții separate în DevOps, axată pe dezvoltarea de aplicații containerizate, care reduc timpul de lansare a noilor proiecte pe piață. De la apariția Kubernetes, majoritatea celor mai mari jucători de pe piața tehnologiilor cloud, inclusiv VMWare, Azure, AWS și alții, au anunțat suportul pentru acesta peste propriile lor infrastructuri. Sistemele de containerizare se dezvoltă în continuare, apar noi instrumente pentru crearea și implementarea aplicațiilor containerizate, precum și pentru gestionarea clusterelor mari de containere în centrele de procesare a datelor. Kubernetes suportă clase tot mai complexe de aplicații, permițând companiilor să treacă atât la cloud-ul hibrid, cât și la arhitecturile de microservicii. Containerizarea a devenit baza infrastructurii software moderne, iar Kubernetes este folosit astăzi în majoritatea proiectelor corporative mari.
+Containerizarea și orchestrarea containerelor au devenit baza infrastructurii software moderne, iar Kubernetes este folosit în majoritatea proiectelor mari din mediul enterprise.
 
 ## Bibliografie
 
-- [CyberPaul, В изоляции. История появления и развития контейнеров, Serverspace, Habr.com](https://habr.com/ru/companies/serverspace/articles/741874/)
-- [Docker, Docker History](https://docs.docker.com/engine/docker-overview/#docker-engine)
+- [CyberPaul, În izolare. Istoria apariției și dezvoltării containerelor, Serverspace, Habr.com](https://habr.com/ru/companies/serverspace/articles/741874/)
+- [Docker, Istoria Docker](https://docs.docker.com/engine/docker-overview/#docker-engine)
 - [Wikipedia, FreeBSD Jail](https://en.wikipedia.org/wiki/FreeBSD_jail)
 - [Wikipedia, Solaris Containers](https://en.wikipedia.org/wiki/Solaris_Containers)
 - [Wikipedia, Docker](https://en.wikipedia.org/wiki/Docker_(software))
@@ -101,12 +147,12 @@ Siguranța și comoditatea containerelor, precum și viteza mare de implementare
 - [cgroups, Wikipedia](https://en.wikipedia.org/wiki/Cgroups)
 - [Kubernetes, Wikipedia](https://en.wikipedia.org/wiki/Kubernetes)
 
-## Lista termenilor
+## Lista de termeni
 
-- __virtualizarea__ - tehnologie care permite rularea unei instanțe a unui sistem de operare în cadrul altui sistem de operare.
-- __containerizarea__ - metodă de virtualizare care utilizează resursele nucleului sistemului de operare.
-- __izolarea proceselor__ - posibilitatea de a porni mai multe procese în cadrul unui singur sistem de operare, dar cu resurse izolate.
-- __chroot__ - sistem de apeluri Unix care schimbă locația directorului rădăcină al procesului și a elementelor sale copil.
-- __hypervisor__ - program de virtualizare care implementează emularea hardware-ului.
-- __mașină virtuală__ - instanță a unui sistem de operare, rulând în cadrul altui sistem de operare.
-- __container__ - instanță izolată a unei aplicații, rulând în cadrul unui sistem de operare.
+- __virtualizare__ — tehnologie care permite rularea unei instanțe a unui sistem de operare în cadrul altui sistem de operare.
+- __containerizare__ — tehnologie de izolare a aplicațiilor la nivelul sistemului de operare, folosind nucleul comun al gazdei și mecanismele nucleului OS.
+- __izolarea proceselor__ — posibilitatea de a rula mai multe procese în cadrul unui singur sistem de operare, dar cu resurse izolate unele de altele.
+- __chroot__ — apel de sistem Unix care schimbă locația directorului rădăcină al procesului și al proceselor copil ale acestuia.
+- __hipervizor__ — program de virtualizare care realizează emularea resurselor hardware.
+- __mașină virtuală__ — instanță a unui sistem de operare, rulată în cadrul altui sistem de operare cu ajutorul unui hipervizor.
+- __container__ — mediu izolat care include aplicația și toate dependențele sale, rulat folosind nucleul comun al sistemului de operare, de obicei creat pe baza unei imagini (image).

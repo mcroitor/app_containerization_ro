@@ -1,0 +1,100 @@
+// # Întrebări pe tema "Integrare și livrare continuă (CI/CD)"
+// ## Întrebări cu un singur răspuns corect din patru opțiuni
+
+$CATEGORY:  10_CI_CD/1_knowledge
+
+::10k001:: [markdown]Practica de dezvoltare software în care dezvoltatorii își integrează modificările în ramura principală de mai multe ori pe zi se numește
+{
+    = [markdown]Integrare continuă
+    ~ [markdown]Livrare continuă
+    ~ [markdown]Implementare continuă
+    ~ [markdown]Testare continuă
+}
+
+::10k002:: [markdown]Build-urile programate ale produsului permit
+{
+   = [markdown]reducerea încărcării pe serverul de integrare continuă
+   ~ [markdown]reducerea timpului de testare
+   ~ [markdown]reducerea timpului de livrare
+   ~ [markdown]reducerea timpului de implementare
+}
+
+::10k003:: [markdown]Practica de dezvoltare software în care fiecare modificare a codului trece prin teste automatizate pentru a respecta standardele de calitate și securitate și este gata pentru lansare în producție se numește
+{
+    = [markdown]Livrare continuă
+    ~ [markdown]Implementare continuă
+    ~ [markdown]Integrare continuă
+    ~ [markdown]Testare continuă
+}
+
+::10k004:: [markdown]Practica de dezvoltare software în care fiecare modificare a codului, care trece cu succes toate etapele de testare, este implementată automat pe serverul de producție se numește
+{
+    = [markdown]Implementare continuă
+    ~ [markdown]Livrare continuă
+    ~ [markdown]Integrare continuă
+    ~ [markdown]Testare continuă
+}
+
+::10k005:: [markdown]Pentru a implementa integrarea continuă este necesar
+{
+    = [markdown]să se utilizeze un sistem de control al versiunilor
+    ~ [markdown]să se utilizeze un sistem de management al proiectelor
+    ~ [markdown]să se utilizeze un sistem de management al sarcinilor
+    ~ [markdown]să se utilizeze un sistem de management al lansărilor
+}
+
+::10k006:: [markdown]În cadrul integrării continue, modificările codului pot fi integrate în ramura principală
+{
+    = [markdown]de mai multe ori pe zi
+    ~ [markdown]o dată pe săptămână
+    ~ [markdown]de fiecare dată când se implementează o nouă funcționalitate
+    ~ [markdown]de fiecare dată când are loc o lansare
+}
+
+::10k007:: [markdown]În dezvoltarea unui produs software pentru implementarea unei noi funcționalități
+{
+    = [markdown]trebuie creată o nouă ramură pe baza ramurii principale
+    ~ [markdown]toate modificările sunt realizate în ramura principală
+    ~ [markdown]nu este posibil să se lucreze simultan în mai multe ramuri
+    ~ [markdown]trebuie creată o nouă ramură pe baza ramurii de testare
+}
+
+::10k008:: [markdown]În cadrul integrării continue este necesar
+{
+    = [markdown]să se utilizeze un sistem de control al versiunilor
+    ~ [markdown]să se utilizeze un sistem de management al proiectelor
+    ~ [markdown]să se utilizeze un sistem de management al sarcinilor
+    ~ [markdown]să se utilizeze un sistem de management al lansărilor
+}
+
+::10k009:: [markdown]În cadrul integrării continue, fuziunea modificărilor în ramura principală are loc
+{
+    = [markdown]după trecerea cu succes a tuturor testelor
+    ~ [markdown]la fiecare modificare a codului
+    ~ [markdown]la fiecare commit
+    ~ [markdown]la fiecare lansare
+}
+
+::10k010:: [markdown]Integrarea continuă permite
+{
+    = [markdown]identificarea și remedierea erorilor în stadiile incipiente ale dezvoltării
+    ~ [markdown]reducerea timpului de testare
+    ~ [markdown]reducerea timpului de livrare
+    ~ [markdown]reducerea timpului de implementare
+}
+
+::10k011:: [markdown]Care dintre următoarele instrumente este utilizat pentru organizarea proceselor CI/CD?
+{
+    = [markdown]Jenkins
+    ~ [markdown]JIRA
+    ~ [markdown]Confluence
+    ~ [markdown]Git
+}
+
+::10k012:: [markdown]Care dintre următoarele reprezintă o caracteristică cheie a livrării continue?
+{
+    = [markdown]Fiecare modificare a codului trece prin teste automatizate și este gata pentru lansare în producție
+    ~ [markdown]Fiecare modificare a codului este automat implementată în mediul de producție
+    ~ [markdown]Modificările codului sunt integrate în ramura principală de mai multe ori pe zi
+    ~ [markdown]Reducerea timpului de execuție a testelor
+}

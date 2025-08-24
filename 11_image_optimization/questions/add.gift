@@ -1,0 +1,56 @@
+$CATEGORY: 11_image_optimization/1_knowledge
+
+::11k007:: [markdown] Având Dockerfile-ul\:
+   ```dockerfile
+   FROM php\:8.1
+   COPY ./site /var/www/html
+   ```
+   Cum putem reduce dimensiunea imaginii rezultate?
+{
+   = [markdown]înlocuim `php\:8.1` cu `php\:8.1-alpine`
+   ~ [markdown]folosim construcție multi-etapă
+   ~ [markdown]reducem numărul de straturi
+   ~ [markdown]folosim `.dockerignore`
+}
+
+::11k008:: [markdown] Având Dockerfile-ul\:
+   ```dockerfile
+   FROM drupal\:alpine
+   COPY ./site /var/www/html
+   ```
+   Cum putem reduce dimensiunea imaginii rezultate?
+{
+   = [markdown]stocăm site-ul într-un volum montat
+   ~ [markdown]folosim construcție multi-etapă
+   ~ [markdown]reducem numărul de straturi
+   ~ [markdown]folosim `.dockerignore`
+}
+
+::11k009:: [markdown] Având Dockerfile-ul\:
+    ```dockerfile
+    FROM ubuntu\:22.04
+    RUN apt-get update && apt-get install -y python
+    RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    ```
+    Cum putem reduce dimensiunea imaginii rezultate?
+{
+    = [markdown]combinăm straturile
+    ~ [markdown]folosim construcție multi-etapă
+    ~ [markdown]stocăm datele într-un volum montat
+    ~ [markdown]folosim `.dockerignore`
+}
+
+::11k010:: [markdown] Având Dockerfile-ul\:
+    ```dockerfile
+    FROM openjdk\:latest
+    COPY /app /
+    RUN mvn install
+    CMD ["java", "-cp", "app:app/lib/*"]
+    ```
+    Cum putem reduce dimensiunea imaginii rezultate?
+{
+    = [markdown]folosim construcție multi-etapă
+    ~ [markdown]reducem numărul de straturi
+    ~ [markdown]stocăm datele într-un volum montat
+    ~ [markdown]folosim `.dockerignore`
+}
