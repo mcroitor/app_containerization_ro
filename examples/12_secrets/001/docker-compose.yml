@@ -58,7 +58,7 @@ volumes:
 
 secrets:
   db_password:
-    file: ./secrets/db_password.txt
+    environment: MYSQL_PASSWORD 
   db_user:
     file: ./secrets/db_user.txt
   db_root_password:

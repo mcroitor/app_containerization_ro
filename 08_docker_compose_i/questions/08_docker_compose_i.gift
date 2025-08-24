@@ -1,0 +1,178 @@
+// # Intrebari pe tema "Crearea unui cluster de containere cu ajutorul Docker Compose"
+
+$CATEGORY:  08_docker_compose_i/1_knowledge
+
+::08k001:: [markdown] Docker Compose este
+{
+    = [markdown]instrument pentru descrierea și rularea aplicațiilor multi-container
+    ~ [markdown]instrument pentru descrierea și rularea aplicațiilor single-container
+    ~ [markdown]serviciu pentru gestionarea imaginilor containerelor
+    ~ [markdown]serviciu pentru gestionarea containerelor
+}
+
+::08k002:: [markdown] Care format este utilizat pentru descrierea aplicațiilor multi-container în Docker Compose?
+{
+    = [markdown]YAML
+    ~ [markdown]JSON
+    ~ [markdown]XML
+    ~ [markdown]TOML
+}
+
+::08k003:: [markdown] Cum se numește fișierul utilizat pentru descrierea aplicațiilor multi-container în Docker Compose?
+{
+    = [markdown]docker-compose.yml
+    ~ [markdown]docker-compose.xml
+    ~ [markdown]docker-compose.json
+    ~ [markdown]docker-compose.toml
+}
+
+::08k004:: [markdown] Care comandă poate fi utilizată pentru a construi și rula aplicația multi-container descrisă în fișierul `docker-compose.yml`?
+{
+    = [markdown]`docker-compose up`
+    ~ [markdown]`docker-compose start`
+    ~ [markdown]`docker-compose run`
+    ~ [markdown]`docker-compose exec`
+}
+
+::08k005:: [markdown] Care comandă poate fi utilizată pentru a opri și șterge aplicația multi-container pornită?
+{
+    = [markdown]`docker-compose down`
+    ~ [markdown]`docker-compose stop`
+    ~ [markdown]`docker-compose stop`
+    ~ [markdown]`docker-compose rm`
+}
+
+::08k006:: [markdown] Pentru a construi aplicația multi-container descrisă în fișierul `docker-compose.yml`, trebuie să executați comanda
+{
+    = [markdown]`docker-compose build`
+    ~ [markdown]`docker-compose compile`
+    ~ [markdown]`docker-compose start`
+    ~ [markdown]`docker-compose run`
+}
+
+::08k007:: [markdown] Este dat fișierul `docker-compose.yml`
+    ```yaml
+    services\:
+      web\:
+        image\: nginx\:latest
+        ports\:
+          - "8080\:80"
+    ```
+    Ce container va fi pornit la executarea comenzii `docker-compose up`?
+{
+    = [markdown]web
+    ~ [markdown]nginx
+    ~ [markdown]latest
+    ~ [markdown]informație insuficientă pentru a răspunde
+}
+
+::08k008:: [markdown]În fișierul `docker-compose.yml` trebuie să specificați
+{
+    = [markdown]lista serviciilor
+    ~ [markdown]lista imaginilor
+    ~ [markdown]lista rețelelor
+    ~ [markdown]lista volumelor
+}
+
+::08k009:: [markdown] Care cheie este utilizată pentru a specifica serviciile în fișierul `docker-compose.yml`?
+{
+    = [markdown]services
+    ~ [markdown]containers
+    ~ [markdown]service
+    ~ [markdown]images
+}
+
+::08k010:: [markdown]Care cheie este utilizată pentru a specifica imaginea pe baza căreia va fi creat containerul în fișierul `docker-compose.yml`?
+{
+    = [markdown]image
+    ~ [markdown]container
+    ~ [markdown]service
+    ~ [markdown]images
+}
+
+::08k011:: [markdown] Dacă cheia `image` nu este specificată pentru un serviciu, trebuie să specificați cheia
+{
+    = [markdown]build
+    ~ [markdown]create
+    ~ [markdown]run
+    ~ [markdown]from
+}
+
+::08k012:: [markdown]Care cheie este utilizată pentru a specifica porturile care trebuie expuse din container în sistemul gazdă în fișierul `docker-compose.yml`?
+{
+    = [markdown]ports
+    ~ [markdown]expose
+    ~ [markdown]publish
+    ~ [markdown]forward
+}
+
+::08k013:: [markdown] Pentru a specifica montarea unui volum în container în fișierul `docker-compose.yml` se utilizează cheia
+{
+    = [markdown]volumes
+    ~ [markdown]mounts
+    ~ [markdown]bind
+    ~ [markdown]attach
+}
+
+::08k014:: [markdown] Pentru a specifica rețelele utilizate de un serviciu în fișierul `docker-compose.yml` se utilizează cheia
+{
+    = [markdown]networks
+    ~ [markdown]net
+    ~ [markdown]network
+    ~ [markdown]nets
+}
+
+::08k015:: [markdown] Pentru a specifica ordinea de pornire a serviciilor în fișierul `docker-compose.yml` se utilizează cheia
+{
+    = [markdown]depends_on
+    ~ [markdown]run_after
+    ~ [markdown]after
+    ~ [markdown]before
+}
+
+::08k016:: [markdown] Pentru a vizualiza jurnalul de evenimente al serviciului `myservice`, descris în fișierul `docker-compose.yml`, trebuie să executați comanda
+{
+    = [markdown]`docker-compose logs myservice`
+    ~ [markdown]`docker-compose log myservice`
+    ~ [markdown]`docker-compose journal myservice`
+    ~ [markdown]`docker-compose events myservice`
+}
+
+::08k017:: [markdown] Pentru a executa comanda `command` în interiorul containerului serviciului `myservice`, descris în fișierul `docker-compose.yml`, trebuie să executați comanda
+{
+    = [markdown]`docker-compose exec myservice command`
+    ~ [markdown]`docker-compose run myservice command`
+    ~ [markdown]`docker-compose start myservice command`
+    ~ [markdown]`docker-compose stop myservice command`
+}
+
+$CATEGORY:  08_docker_compose_i/2_usage
+// ## Raspuns scurt
+
+::08u001:: [markdown] Pentru a specifica versiunea sintaxei Docker Compose în fișierul `docker-compose.yml` se utilizează cheia {=version}
+
+::08u002:: [markdown] Pentru a specifica serviciile în fișierul `docker-compose.yml` se utilizează cheia {=services}
+
+::08u003:: [markdown] Pentru a specifica imaginea pe baza căreia va fi creat containerul, în fișierul `docker-compose.yml` se utilizează cheia {=image}
+
+::08u004:: [markdown] Pentru a specifica porturile care trebuie expuse din container în sistemul gazdă, în fișierul `docker-compose.yml` se utilizează cheia {=ports}
+
+::08u005:: [markdown] Pentru a specifica montarea unui volum în container, în fișierul `docker-compose.yml` se utilizează cheia {=volumes}
+
+::08u006:: [markdown] Pentru a specifica rețelele utilizate de un serviciu, în fișierul `docker-compose.yml` se utilizează cheia {=networks}
+
+::08u007:: [markdown] Pentru a specifica ordinea de pornire a serviciilor, în fișierul `docker-compose.yml` se utilizează cheia {=depends_on}
+
+::08u008:: [markdown] Pentru a specifica calea către directorul cu fișierul `Dockerfile`, în fișierul `docker-compose.yml` se utilizează cheia {=build}
+
+::08u009:: [markdown] Pentru a specifica comanda care va fi executată la pornirea containerului, în fișierul `docker-compose.yml` se utilizează cheia {=command}
+
+::08u010:: [markdown] Pentru a crea infrastructura definită în fișierul `docker-compose.yml` și a construi containerele serviciilor, trebuie să executați comanda {=docker-compose build =docker compose build}
+
+::08u011:: [markdown] Pentru a porni containerele serviciilor definite în fișierul `docker-compose.yml`, trebuie să executați comanda {=docker-compose up =docker-compose up -d =docker compose up =docker compose up -d}
+
+::08u012:: [markdown] Pentru a opri și șterge containerele serviciilor definite în fișierul `docker-compose.yml`, trebuie să executați comanda {=docker-compose down =docker compose down}
+
+::08u013:: [markdown] Pentru a vizualiza jurnalul de evenimente al serviciului `myservice`, definit în fișierul `docker-compose.yml`, trebuie să executați comanda {=docker-compose logs myservice =docker compose logs myservice =docker-compose logs -f myservice =docker compose logs -f myservice}
+
+::08u014:: [markdown] Pentru a executa comanda `command` în interiorul containerului serviciului `myservice`, definit în fișierul `docker-compose.yml`, trebuie să executați comanda {=docker-compose exec myservice command =docker compose exec myservice command}

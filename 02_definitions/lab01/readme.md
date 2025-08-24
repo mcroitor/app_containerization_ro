@@ -1,4 +1,4 @@
-# Lucrare de laborator Nr2: Lucrul cu GIT
+# Lucrare de laborator Nr1: Lucrul cu GIT
 
 ## Scop
 

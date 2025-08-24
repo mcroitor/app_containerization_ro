@@ -1,6 +1,6 @@
 # Containerizarea aplicațiilor
 
-Cursul este planificat pentru 12 lecții teoretice. Pentru a înțelege materialul, trebuie mai întâi să studiați cursurile "Sisteme de operare", "Rețele de calculatoare", "Baze de date".
+Cursul este planificat pentru 13 lecții teoretice. Pentru a înțelege materialul, trebuie mai întâi să studiați cursurile "Sisteme de operare", "Rețele de calculatoare", "Baze de date".
 
 În cadrul cursului se studiază scopul containerizării aplicațiilor, domenii de utilizare ale containerelor, crearea imaginilor și rularea containerelor, crearea unui grup de containere și orchestrarea acestora.
 
@@ -9,9 +9,9 @@ Materialele cursului sunt disponibile pe [GitHub](https://github.com/mcroitor/ap
 ## Teme
 
 1. [Introducere / Istorie](01_intro/README.md)
-2. [Virtualizarea](02_virtual/README.md)
-3. [Noțiuni de bază](03_definitions/README.md)
-4. [Crearea imaginilor Docker](04_dockerfile_i/README.md)
+2. [Noțiuni de bază](02_definitions/README.md)
+3. [Virtualizarea](03_virtual/README.md)
+4. [Sintaxa Dockerfile](04_dockerfile_i/README.md)
 5. [Pornirea aplicațiilor containerizate](05_docker_run/README.md)
 6. [Comenzile suplimentare din Dockerfile](06_dockerfile_ii/README.md)
 7. [Interacțiunea containerelor](07_container_usage/README.md)

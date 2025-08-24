@@ -2,7 +2,7 @@
 
 $CATEGORY:  08_docker_compose_ii/1_knowledge
 
-::07k001:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica variabilele de mediu care trebuie transmise containerului?
+::09k001:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica variabilele de mediu care trebuie transmise containerului?
 {
     = [markdown]environment
     ~ [markdown]env
@@ -10,7 +10,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown]vars
 }
 
-::07k002:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica fișierul cu variabile de mediu?
+::09k002:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica fișierul cu variabile de mediu?
 {
     = [markdown]env_file
     ~ [markdown]environment_file
@@ -18,7 +18,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown]vars_file
 }
 
-::07k003:: [markdown]Care fișier este automat inclus de Docker Compose în fișierul `docker-compose.yml`, dacă variabilele de mediu sunt declarate în el?
+::09k003:: [markdown]Care fișier este automat inclus de Docker Compose în fișierul `docker-compose.yml`, dacă variabilele de mediu sunt declarate în el?
 {
     = [markdown].env
     ~ [markdown].vars
@@ -26,7 +26,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown].env_file
 }
 
-::07k004:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica argumentele de construire a imaginii?
+::09k004:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica argumentele de construire a imaginii?
 {
     = [markdown]build.args
     ~ [markdown]image.args
@@ -34,7 +34,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown]image.variables
 }
 
-::07k005:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica contextul de construire a imaginii?
+::09k005:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica contextul de construire a imaginii?
 {
     = [markdown]build.context
     ~ [markdown]image.context
@@ -42,7 +42,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown]image.dir
 }
 
-::07k006:: [markdown]Cum se poate limita timpul de procesare disponibil containerului în `docker-compose.yml`?
+::09k006:: [markdown]Cum se poate limita timpul de procesare disponibil containerului în `docker-compose.yml`?
 {
     = [markdown]specificând valoarea cheii `deploy.resources.limits.cpus`
     ~ [markdown]specificând valoarea cheii `deploy.resources.cpu_limit`
@@ -50,7 +50,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown]specificând valoarea cheii `deploy.resources.cpu.shares`
 }
 
-::07k007:: [markdown]Cum se poate limita memoria disponibilă containerului în `docker-compose.yml`?
+::09k007:: [markdown]Cum se poate limita memoria disponibilă containerului în `docker-compose.yml`?
 {
     = [markdown]specificând valoarea cheii `deploy.resources.limits.memory`
     ~ [markdown]specificând valoarea cheii `deploy.resources.memory_limit`
@@ -58,7 +58,7 @@ $CATEGORY:  08_docker_compose_ii/1_knowledge
     ~ [markdown]specificând valoarea cheii `deploy.resources.memory.shares`
 }
 
-::07k008:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica limitele de resurse ale containerului?
+::09k008:: [markdown]Care cheie este utilizată în fișierul `docker-compose.yml` pentru a specifica limitele de resurse ale containerului?
 {
     = [markdown]deploy.resources
     ~ [markdown]resources
