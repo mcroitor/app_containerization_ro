@@ -1,14 +1,26 @@
-# Containerizarea aplicațiilor
+# Virtualizare și containerizare
 
-Cursul este planificat pentru 13 lecții teoretice. Pentru a înțelege materialul, trebuie mai întâi să studiați cursurile "Sisteme de operare", "Rețele de calculatoare", "Baze de date".
+Conspectul lecțiilor a cursului "Virtualizare și containerizare". El este preconizat pentru 12 lecții teoretice. Pentru a înțelege materialul, trebuie mai întâi să studiați cursurile "Sisteme de operare", "Rețele de calculatoare", "Baze de date".
 
-În cadrul cursului se studiază scopul containerizării aplicațiilor, domenii de utilizare ale containerelor, crearea imaginilor și rularea containerelor, crearea unui grup de containere și orchestrarea acestora.
+În cadrul cursului se studiază scopul virtualizării și containerizării aplicațiilor, domenii de utilizare ale containerelor, crearea imaginilor și rularea containerelor, crearea unui grup de containere și orchestrarea acestora.
 
-Materialele cursului sunt disponibile pe [GitHub](https://github.com/mcroitor/app_containerization_ro).
+După finalizarea cursului studenții vor putea:
+
+- Înțelege conceptele de bază ale virtualizării și containerizării;
+- Crea și configura mașini virtuale folosind Qemu;
+- Crea și configura containere folosind Docker;
+- Utiliza Dockerfile pentru a crea imagini de containere;
+- Crea și gestiona aplicații multi-container folosind docker-compose;
+- Integra containerele în procesele CI / CD;
+- Optimiza imaginile containerelor.
+
+Repository-ul cu materialele cursului este disponibil pe [GitHub](https://github.com/mcroitor/app_containerization_ro).
+
+- [Glosar](glossary.md)
 
 ## Teme
 
-1. [Introducere / Istorie](01_intro/README.md)
+1. [Introducere](01_intro/README.md)
 2. [Noțiuni de bază](02_definitions/README.md)
 3. [Virtualizarea](03_virtual/README.md)
 4. [Sintaxa Dockerfile](04_dockerfile_i/README.md)
@@ -16,10 +28,10 @@ Materialele cursului sunt disponibile pe [GitHub](https://github.com/mcroitor/ap
 6. [Comenzile suplimentare din Dockerfile](06_dockerfile_ii/README.md)
 7. [Interacțiunea containerelor](07_container_usage/README.md)
 8. [Crearea unui cluster de containere cu ajutorul Docker Compose](08_docker_compose_i/README.md)
-9. [docker-compose II](09_docker_compose_ii/README.md)
-10. [Containere în procese CI / CD](10_CI_CD/README.md)
-11. [Optimizarea imaginilor](11_image_optimization/README.md)
-12. [Managementul secretelor](12_secrets/README.md)
+9. [Particularitățile configurării clusterului de containere](09_docker_compose_ii/README.md)
+10. [Integrarea continuă și livrarea continuă (CI / CD)](10_CI_CD/README.md)
+11. [Optimizarea imaginii containerului](11_image_optimization/README.md)
+12. [Gestionarea secretelor](12_secrets_management/README.md)
 13. [Practici bune în elaborarea containerelor](13_best_practicies/README.md)
 
 - [Materiale suplimentare](additional/README.md)
