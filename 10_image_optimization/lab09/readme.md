@@ -185,7 +185,7 @@ Construiți imaginea cu numele `mynginx:minx` și verificați dimensiunea aceste
 docker image build -t mynginx:minx -f Dockerfile.min .
 docker container create --name mynginx mynginx:minx
 docker container export mynginx | docker image import - mynginx:min
-docker container.rm mynginx
+docker container rm mynginx
 docker image list
 ```
 
