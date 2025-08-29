@@ -35,8 +35,7 @@ Cursul este predat în limbile română și rusă, pentru a răspunde nevoilor l
 Beneficiarii principali ai acestui curs sunt:
 
 - Studenții programului de licență 0613.4 Informatică, care își vor consolida cunoștințele în DevOps.
-- Profesioniști din domeniul IT, interesați de actualizarea competențelor lor în testarea de penetrare și protecția rețelelor.
-
+- Profesioniști din domeniul IT, interesați de actualizarea competențelor lor în DevOps, containerizare, orchestrarea containerelor și infrastructură Cloud.
 ## I. ADMINISTRAREA DISCIPLINEI
 
 | Forma de învățământ | Codul unității de curs | Denumirea unității de curs     | Responsabil de unitatea de curs | Semestrul | Total | C   | S   | L   | LI  | Evaluare | Credite |
